@@ -36,7 +36,7 @@
                     "name": "Sprint",
                     "type": "PassThrough",
                     "id": "980e881e-182c-404c-8cbf-3d09fdb48fef",
-                    "expectedControlType": "",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -45,6 +45,15 @@
                     "name": "Dodge",
                     "type": "Button",
                     "id": "20925073-cd17-429b-bd47-993e1dfd0236",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Slide",
+                    "type": "Button",
+                    "id": "71492bb2-13c8-4318-b466-5ccca842ede0",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -241,12 +250,34 @@
                 },
                 {
                     "name": "",
-                    "id": "f3eed1d6-cf81-4f0d-bd10-930b2bb0d0ea",
-                    "path": "<XInputController>/buttonEast",
+                    "id": "2b395245-34ab-47bd-8fd9-aad4acf28703",
+                    "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Xbox Controller",
+                    "groups": "Gamepad;Xbox Controller;PS4 Controller",
                     "action": "Dodge",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3dc2c92a-5785-49ae-af8c-9a2eeb706b98",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "Slide",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6f34424f-fb78-4463-8179-1c051819cdf0",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad;Xbox Controller;PS4 Controller",
+                    "action": "Slide",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -13,6 +13,7 @@ namespace StarterAssets
 		public bool jump;
 		public bool sprint;
 		public bool dodge;
+		public bool slide;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -47,6 +48,9 @@ namespace StarterAssets
 		public void OnDodge(InputValue value){
 			DodgeInput(value.isPressed);
 		}
+		public void OnSlide(InputValue value){
+			SlideInput(value.isPressed);
+		}
 #endif
 
 
@@ -67,10 +71,14 @@ namespace StarterAssets
 
 		public void SprintInput(bool newSprintState)
 		{
-			sprint = newSprintState;
+			if(newSprintState)
+				sprint = !sprint;//newSprintState;
 		}
 		public void DodgeInput(bool newDodgeState){
 			dodge = newDodgeState;
+		}
+		public void SlideInput(bool newSlideState){
+			slide = newSlideState;
 		}
 		
 		private void OnApplicationFocus(bool hasFocus)

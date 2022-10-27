@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 2560
     height: 1349.3334
   m_ShowMode: 4
-  m_Title: GitHub
+  m_Title: Git for Unity
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 67
+  controlID: 17
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 19
+  controlID: 78
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 20
+  controlID: 79
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -189,8 +189,8 @@ MonoBehaviour:
     y: 0
     width: 316.66666
     height: 1064.6666
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -233,7 +233,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: ProjectBrowser
+  m_Name: ConsoleWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -242,14 +242,14 @@ MonoBehaviour:
     y: 1064.6666
     width: 1982
     height: 234.66675
-  m_MinSize: {x: 231, y: 271}
-  m_MaxSize: {x: 10001, y: 10021}
-  m_ActualView: {fileID: 16}
+  m_MinSize: {x: 101, y: 121}
+  m_MaxSize: {x: 4001, y: 4021}
+  m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 16}
   - {fileID: 17}
-  m_Selected: 0
-  m_LastSelected: 1
+  m_Selected: 1
+  m_LastSelected: 0
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -269,8 +269,8 @@ MonoBehaviour:
     y: 0
     width: 578
     height: 1299.3334
-  m_MinSize: {x: 101, y: 121}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 12}
   m_Panes:
   - {fileID: 18}
@@ -286,13 +286,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 363648761, guid: 68c7e4565cde54155bb78d8e935f1ddb, type: 3}
+  m_Script: {fileID: 11500000, guid: 7ffb9ccd5681bd841ae77e9e5571f770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_MinSize: {x: 100, y: 100}
   m_MaxSize: {x: 4000, y: 4000}
   m_TitleContent:
-    m_Text: GitHub
+    m_Text: Git for Unity
     m_Image: {fileID: 0}
     m_Tooltip: 
   m_Pos:
@@ -313,31 +313,20 @@ MonoBehaviour:
   currentStatusEntriesHasUpdate: 0
   repositoryProgressHasUpdate: 0
   appManagerProgressHasUpdate: 0
-  changeTab: 5
-  activeTab: 5
+  changeTab: 3
+  activeTab: 3
   initProjectView:
-    hasCompletedInitialCheck: 1
-    isUserDataPresent: 1
+    hasCompletedInitialCheck: 0
+    isUserDataPresent: 0
     lastCheckUserChangedEvent:
-      updatedTimeString: 2022-10-26T02:15:01.068-06:00
+      updatedTimeString: 0001-01-01T00:00:00.000+00:00
       cacheType: 8
   branchesView:
     treeLocals:
       IsRemote: 0
       folders:
-        keys:
-        - Local branches
-        values:
-        - path: Local branches
-          label: Local branches
-          level: 0
-          isFolder: 1
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 0
-          checkState: 0
+        keys: []
+        values: []
       checkedFileNodes:
         keys: []
         values: []
@@ -346,27 +335,7 @@ MonoBehaviour:
       displayRootNode: 1
       isSelectable: 1
       isCheckable: 0
-      nodes:
-      - path: Local branches
-        label: Local branches
-        level: 0
-        isFolder: 1
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 0
-        checkState: 0
-      - path: master
-        label: master
-        level: 1
-        isFolder: 0
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 1
-        treeIsCheckable: 0
-        checkState: 0
+      nodes: []
       selectedNode:
         path: 
         label: 
@@ -381,30 +350,8 @@ MonoBehaviour:
     treeRemotes:
       IsRemote: 1
       folders:
-        keys:
-        - Remote branches
-        - origin
-        values:
-        - path: Remote branches
-          label: Remote branches
-          level: 0
-          isFolder: 1
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 0
-          checkState: 0
-        - path: origin
-          label: origin
-          level: 1
-          isFolder: 1
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 0
-          checkState: 0
+        keys: []
+        values: []
       checkedFileNodes:
         keys: []
         values: []
@@ -413,42 +360,12 @@ MonoBehaviour:
       displayRootNode: 1
       isSelectable: 1
       isCheckable: 0
-      nodes:
-      - path: Remote branches
-        label: Remote branches
-        level: 0
-        isFolder: 1
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 0
-        checkState: 0
-      - path: origin
-        label: origin
-        level: 1
-        isFolder: 1
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 0
-        checkState: 0
-      - path: origin/master
-        label: master
-        level: 2
-        isFolder: 0
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 0
-        checkState: 0
+      nodes: []
       selectedNode:
-        path: origin
-        label: origin
-        level: 1
-        isFolder: 1
+        path: 
+        label: 
+        level: 0
+        isFolder: 0
         isContainer: 0
         isCollapsed: 0
         isHidden: 0
@@ -458,48 +375,48 @@ MonoBehaviour:
     mode: 0
     newBranchName: 
     scroll: {x: 0, y: 0}
-    disableDelete: 1
-    disableCreate: 1
+    disableDelete: 0
+    disableCreate: 0
     lastLocalAndRemoteBranchListChangedEvent:
-      updatedTimeString: 2022-10-26T02:27:57.369-06:00
-      cacheType: 2
+      updatedTimeString: 
+      cacheType: 0
     lastCurrentBranchAndRemoteChange:
-      updatedTimeString: 2022-10-26T02:27:57.364-06:00
-      cacheType: 1
+      updatedTimeString: 
+      cacheType: 0
     currentBranch:
-      name: master
-      tracking: origin/master
+      name: 
+      tracking: 
     currentRemote:
-      name: origin
-      url: https://github.com/amscott0/GrapplingGame.git
+      name: 
+      url: 
       login: 
       user: 
       host: 
       function: 0
       token: 
-    localBranches:
-    - name: master
-      tracking: origin/master
-    remoteBranches:
-    - name: origin/master
-      tracking: '[None]'
+    localBranches: []
+    remoteBranches: []
   changesView:
     currentBranchHasUpdate: 0
     currentStatusEntriesHasUpdate: 0
     currentLocksHasUpdate: 0
     commitBody: 
     commitMessage: 
-    currentBranch: '[master]'
+    currentBranch: master
     treeScroll: {x: 0, y: 0}
     treeChanges:
       assets:
+        keys: []
+        values: []
+      folders:
         keys:
-        - 00000000000000004000000000000000
+        - UserSettings
+        - UserSettings\Layouts
         values:
-        - path: ProjectSettings\ProjectSettings.asset
-          label: ProjectSettings.asset
-          level: 1
-          isFolder: 0
+        - path: UserSettings
+          label: UserSettings
+          level: 0
+          isFolder: 1
           isContainer: 0
           isCollapsed: 0
           isHidden: 0
@@ -508,19 +425,15 @@ MonoBehaviour:
           checkState: 0
           isLocked: 0
           gitStatusEntry:
-            path: ProjectSettings\ProjectSettings.asset
-            fullPath: O:\UnityHub\Grappling Game\ProjectSettings\ProjectSettings.asset
-            projectPath: ProjectSettings\ProjectSettings.asset
+            path: 
+            fullPath: 
+            projectPath: 
             originalPath: 
             indexStatus: 0
-            workTreeStatus: 3
-      folders:
-        keys:
-        - ProjectSettings
-        values:
-        - path: ProjectSettings
-          label: ProjectSettings
-          level: 0
+            workTreeStatus: 0
+        - path: UserSettings\Layouts
+          label: Layouts
+          level: 1
           isFolder: 1
           isContainer: 0
           isCollapsed: 0
@@ -564,8 +477,8 @@ MonoBehaviour:
           originalPath: 
           indexStatus: 0
           workTreeStatus: 0
-      - path: ProjectSettings
-        label: ProjectSettings
+      - path: UserSettings
+        label: UserSettings
         level: 0
         isFolder: 1
         isContainer: 0
@@ -582,34 +495,15 @@ MonoBehaviour:
           originalPath: 
           indexStatus: 0
           workTreeStatus: 0
-      - path: ProjectSettings\ProjectSettings.asset
-        label: ProjectSettings.asset
+      - path: UserSettings\Layouts
+        label: Layouts
         level: 1
-        isFolder: 0
+        isFolder: 1
         isContainer: 0
         isCollapsed: 0
         isHidden: 0
         isActive: 0
         treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: ProjectSettings\ProjectSettings.asset
-          fullPath: O:\UnityHub\Grappling Game\ProjectSettings\ProjectSettings.asset
-          projectPath: ProjectSettings\ProjectSettings.asset
-          originalPath: 
-          indexStatus: 0
-          workTreeStatus: 3
-      selectedNode:
-        path: 
-        label: 
-        level: 0
-        isFolder: 0
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 0
         checkState: 0
         isLocked: 0
         gitStatusEntry:
@@ -619,256 +513,106 @@ MonoBehaviour:
           originalPath: 
           indexStatus: 0
           workTreeStatus: 0
+      - path: UserSettings\Layouts\default-2021.dwlt
+        label: default-2021.dwlt
+        level: 2
+        isFolder: 0
+        isContainer: 0
+        isCollapsed: 0
+        isHidden: 0
+        isActive: 0
+        treeIsCheckable: 1
+        checkState: 0
+        isLocked: 0
+        gitStatusEntry:
+          path: UserSettings\Layouts\default-2021.dwlt
+          fullPath: O:\UnityHub\Grappling Game\UserSettings\Layouts\default-2021.dwlt
+          projectPath: UserSettings\Layouts\default-2021.dwlt
+          originalPath: 
+          indexStatus: 0
+          workTreeStatus: 3
+      selectedNode:
+        path: UserSettings\Layouts\default-2021.dwlt
+        label: default-2021.dwlt
+        level: 2
+        isFolder: 0
+        isContainer: 0
+        isCollapsed: 0
+        isHidden: 0
+        isActive: 0
+        treeIsCheckable: 1
+        checkState: 0
+        isLocked: 0
+        gitStatusEntry:
+          path: UserSettings\Layouts\default-2021.dwlt
+          fullPath: O:\UnityHub\Grappling Game\UserSettings\Layouts\default-2021.dwlt
+          projectPath: UserSettings\Layouts\default-2021.dwlt
+          originalPath: 
+          indexStatus: 0
+          workTreeStatus: 3
     gitStatusEntries:
-    - path: ProjectSettings\ProjectSettings.asset
-      fullPath: O:\UnityHub\Grappling Game\ProjectSettings\ProjectSettings.asset
-      projectPath: ProjectSettings\ProjectSettings.asset
+    - path: UserSettings\Layouts\default-2021.dwlt
+      fullPath: O:\UnityHub\Grappling Game\UserSettings\Layouts\default-2021.dwlt
+      projectPath: UserSettings\Layouts\default-2021.dwlt
       originalPath: 
       indexStatus: 0
       workTreeStatus: 3
     changedFilesText: 1 changed file
     lastCurrentBranchChangedEvent:
-      updatedTimeString: 2022-10-26T02:36:03.596-06:00
+      updatedTimeString: 2022-10-26T02:52:57.934-06:00
       cacheType: 1
     lastStatusEntriesChangedEvent:
-      updatedTimeString: 2022-10-26T02:36:05.831-06:00
+      updatedTimeString: 2022-10-26T02:55:07.710-06:00
       cacheType: 6
     lastLocksChangedEvent:
-      updatedTimeString: 0001-01-01T00:00:00.000+00:00
+      updatedTimeString: 2022-10-26T02:55:07.806-06:00
       cacheType: 7
   historyView:
     currentLogHasUpdate: 0
     currentTrackingStatusHasUpdate: 0
-    logEntries:
-    - commitID: e56e90e4ce3ad06d3aecfb015056099f9c0adada
-      mergeA: 
-      mergeB: 
-      authorName: amscott0
-      authorEmail: absc3094@colorado.edu
-      commitEmail: absc3094@colorado.edu
-      commitName: amscott0
-      summary: Initial commit
-      description: 
-      timeString: 2022-10-26T02:15:20.000-06:00
-      commitTimeString: 2022-10-26T02:15:20.000-06:00
-      changes:
-      - path: .gitattributes
-        fullPath: O:\UnityHub\Grappling Game\.gitattributes
-        projectPath: .gitattributes
-        originalPath: 
-        indexStatus: 4
-        workTreeStatus: 0
-      - path: .gitignore
-        fullPath: O:\UnityHub\Grappling Game\.gitignore
-        projectPath: .gitignore
-        originalPath: 
-        indexStatus: 4
-        workTreeStatus: 0
-      - path: Assets\.gitignore
-        fullPath: O:\UnityHub\Grappling Game\Assets\.gitignore
-        projectPath: Assets\.gitignore
-        originalPath: 
-        indexStatus: 4
-        workTreeStatus: 0
+    logEntries: []
     statusAhead: 0
     lastLogChangedEvent:
-      updatedTimeString: 2022-10-26T02:29:06.011-06:00
+      updatedTimeString: 0001-01-01T00:00:00.000+00:00
       cacheType: 3
     lastTrackingStatusChangedEvent:
       updatedTimeString: 0001-01-01T00:00:00.000+00:00
       cacheType: 5
     historyControl:
       scroll: {x: 0, y: 0}
-      entries:
-      - commitID: e56e90e4ce3ad06d3aecfb015056099f9c0adada
-        mergeA: 
-        mergeB: 
-        authorName: amscott0
-        authorEmail: absc3094@colorado.edu
-        commitEmail: absc3094@colorado.edu
-        commitName: amscott0
-        summary: Initial commit
-        description: 
-        timeString: 2022-10-26T02:15:20.000-06:00
-        commitTimeString: 2022-10-26T02:15:20.000-06:00
-        changes:
-        - path: .gitattributes
-          fullPath: O:\UnityHub\Grappling Game\.gitattributes
-          projectPath: .gitattributes
-          originalPath: 
-          indexStatus: 4
-          workTreeStatus: 0
-        - path: .gitignore
-          fullPath: O:\UnityHub\Grappling Game\.gitignore
-          projectPath: .gitignore
-          originalPath: 
-          indexStatus: 4
-          workTreeStatus: 0
-        - path: Assets\.gitignore
-          fullPath: O:\UnityHub\Grappling Game\Assets\.gitignore
-          projectPath: Assets\.gitignore
-          originalPath: 
-          indexStatus: 4
-          workTreeStatus: 0
+      entries: []
       statusAhead: 0
-      selectedIndex: 0
+      selectedIndex: -1
     selectedEntry:
-      commitID: e56e90e4ce3ad06d3aecfb015056099f9c0adada
+      commitID: 
       mergeA: 
       mergeB: 
-      authorName: amscott0
-      authorEmail: absc3094@colorado.edu
-      commitEmail: absc3094@colorado.edu
-      commitName: amscott0
-      summary: Initial commit
+      authorName: 
+      authorEmail: 
+      commitEmail: 
+      commitName: 
+      summary: 
       description: 
-      timeString: 2022-10-26T02:15:20.000-06:00
-      commitTimeString: 2022-10-26T02:15:20.000-06:00
-      changes:
-      - path: .gitattributes
-        fullPath: O:\UnityHub\Grappling Game\.gitattributes
-        projectPath: .gitattributes
-        originalPath: 
-        indexStatus: 4
-        workTreeStatus: 0
-      - path: .gitignore
-        fullPath: O:\UnityHub\Grappling Game\.gitignore
-        projectPath: .gitignore
-        originalPath: 
-        indexStatus: 4
-        workTreeStatus: 0
-      - path: Assets\.gitignore
-        fullPath: O:\UnityHub\Grappling Game\Assets\.gitignore
-        projectPath: Assets\.gitignore
-        originalPath: 
-        indexStatus: 4
-        workTreeStatus: 0
+      timeString: 0001-01-01T00:00:00.000+00:00
+      commitTimeString: 0001-01-01T00:00:00.000+00:00
+      changes: []
     treeChanges:
       assets:
         keys: []
         values: []
       folders:
-        keys:
-        - Assets
-        values:
-        - path: Assets
-          label: Assets
-          level: 0
-          isFolder: 1
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 0
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: 
-            fullPath: 
-            projectPath: 
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 0
+        keys: []
+        values: []
       checkedFileNodes:
         keys: []
         values: []
       title: 
-      pathSeparator: \
+      pathSeparator: /
       displayRootNode: 0
       isSelectable: 1
       isCheckable: 0
       isUsingGlobalSelection: 0
-      nodes:
-      - path: 
-        label: 
-        level: -1
-        isFolder: 1
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 0
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: 
-          fullPath: 
-          projectPath: 
-          originalPath: 
-          indexStatus: 0
-          workTreeStatus: 0
-      - path: .gitattributes
-        label: .gitattributes
-        level: 0
-        isFolder: 0
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 0
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: .gitattributes
-          fullPath: O:\UnityHub\Grappling Game\.gitattributes
-          projectPath: .gitattributes
-          originalPath: 
-          indexStatus: 4
-          workTreeStatus: 0
-      - path: .gitignore
-        label: .gitignore
-        level: 0
-        isFolder: 0
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 0
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: .gitignore
-          fullPath: O:\UnityHub\Grappling Game\.gitignore
-          projectPath: .gitignore
-          originalPath: 
-          indexStatus: 4
-          workTreeStatus: 0
-      - path: Assets
-        label: Assets
-        level: 0
-        isFolder: 1
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 0
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: 
-          fullPath: 
-          projectPath: 
-          originalPath: 
-          indexStatus: 0
-          workTreeStatus: 0
-      - path: Assets\.gitignore
-        label: .gitignore
-        level: 1
-        isFolder: 0
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 0
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: Assets\.gitignore
-          fullPath: O:\UnityHub\Grappling Game\Assets\.gitignore
-          projectPath: Assets\.gitignore
-          originalPath: 
-          indexStatus: 4
-          workTreeStatus: 0
+      nodes: []
       selectedNode:
         path: 
         label: 
@@ -891,17 +635,16 @@ MonoBehaviour:
     detailsScroll: {x: 0, y: 0}
   settingsView:
     gitPathView:
-      gitPath: C:\Users\ams24\AppData\Local\GitHubUnity\git\cmd\git.exe
-      gitLfsPath: C:\Users\ams24\AppData\Local\GitHubUnity\git-lfs\git-lfs.exe
+      gitPath: C:\Users\ams24\AppData\Local\GitForUnity\git\cmd\git.exe
+      gitLfsPath: C:\Users\ams24\AppData\Local\GitForUnity\git\mingw64\libexec\git-core\git-lfs.exe
       errorMessage: 
       resetToBundled: 0
-      resetToSystem: 0
+      resetToSystem: 1
       changingManually: 0
     hasRemote: 1
     lastCurrentRemoteChangedEvent:
-      updatedTimeString: 2022-10-26T02:36:03.596-06:00
+      updatedTimeString: 2022-10-26T02:48:26.602-06:00
       cacheType: 1
-    metricsEnabled: 1
     newRepositoryRemoteUrl: https://github.com/amscott0/GrapplingGame.git
     repositoryRemoteName: origin
     repositoryRemoteUrl: https://github.com/amscott0/GrapplingGame.git
@@ -913,9 +656,9 @@ MonoBehaviour:
       newGitEmail: absc3094@colorado.edu
       needsSaving: 0
       lastCheckUserChangedEvent:
-        updatedTimeString: 2022-10-26T02:33:44.351-06:00
+        updatedTimeString: 2022-10-26T02:49:42.205-06:00
         cacheType: 8
-    webTimeout: 3000
+    webTimeout: 100000
     gitTimeout: 5000
   locksView:
     currentRemoteHasUpdate: 0
@@ -940,1687 +683,19 @@ MonoBehaviour:
             email: 
           lockedAtString: 
         gitFileStatus: 0
-        lockedAt: 1 Jan 0001, 00:00
+        lockedAt: 
     lastCurrentRemoteChangedEvent:
-      updatedTimeString: 2022-10-26T02:27:57.364-06:00
-      cacheType: 1
+      updatedTimeString: 
+      cacheType: 0
     lastLocksChangedEvent:
-      updatedTimeString: 0001-01-01T00:00:00.000+00:00
-      cacheType: 7
+      updatedTimeString: 
+      cacheType: 0
     lastStatusEntriesChangedEvent:
-      updatedTimeString: 2022-10-26T02:29:04.959-06:00
-      cacheType: 6
+      updatedTimeString: 
+      cacheType: 0
     lockedFiles: []
-    gitStatusEntries:
-    - path: .vscode\settings.json
-      fullPath: O:\UnityHub\Grappling Game\.vscode\settings.json
-      projectPath: .vscode\settings.json
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment.meta
-      projectPath: Assets\Environment.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Art.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Art.meta
-      projectPath: Assets\Environment\Art.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Art\Materials.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Art\Materials.meta
-      projectPath: Assets\Environment\Art\Materials.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Art\Materials\Blue_Mat.mat
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Art\Materials\Blue_Mat.mat
-      projectPath: Assets\Environment\Art\Materials\Blue_Mat.mat
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Art\Materials\Blue_Mat.mat.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Art\Materials\Blue_Mat.mat.meta
-      projectPath: Assets\Environment\Art\Materials\Blue_Mat.mat.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Art\Materials\GreyBlue_Mat.mat
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Art\Materials\GreyBlue_Mat.mat
-      projectPath: Assets\Environment\Art\Materials\GreyBlue_Mat.mat
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Art\Materials\GreyBlue_Mat.mat.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Art\Materials\GreyBlue_Mat.mat.meta
-      projectPath: Assets\Environment\Art\Materials\GreyBlue_Mat.mat.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Art\Materials\GridBlue_01_Mat.mat
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Art\Materials\GridBlue_01_Mat.mat
-      projectPath: Assets\Environment\Art\Materials\GridBlue_01_Mat.mat
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Art\Materials\GridBlue_01_Mat.mat.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Art\Materials\GridBlue_01_Mat.mat.meta
-      projectPath: Assets\Environment\Art\Materials\GridBlue_01_Mat.mat.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Art\Materials\GridGreen_01_Mat.mat
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Art\Materials\GridGreen_01_Mat.mat
-      projectPath: Assets\Environment\Art\Materials\GridGreen_01_Mat.mat
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Art\Materials\GridGreen_01_Mat.mat.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Art\Materials\GridGreen_01_Mat.mat.meta
-      projectPath: Assets\Environment\Art\Materials\GridGreen_01_Mat.mat.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Art\Materials\GridOrange_01_Mat.mat
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Art\Materials\GridOrange_01_Mat.mat
-      projectPath: Assets\Environment\Art\Materials\GridOrange_01_Mat.mat
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Art\Materials\GridOrange_01_Mat.mat.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Art\Materials\GridOrange_01_Mat.mat.meta
-      projectPath: Assets\Environment\Art\Materials\GridOrange_01_Mat.mat.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Art\Materials\GridWhite_01_Mat.mat
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Art\Materials\GridWhite_01_Mat.mat
-      projectPath: Assets\Environment\Art\Materials\GridWhite_01_Mat.mat
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Art\Materials\GridWhite_01_Mat.mat.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Art\Materials\GridWhite_01_Mat.mat.meta
-      projectPath: Assets\Environment\Art\Materials\GridWhite_01_Mat.mat.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Art\Materials\ShaderGraphGrid_01_Mat.mat
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Art\Materials\ShaderGraphGrid_01_Mat.mat
-      projectPath: Assets\Environment\Art\Materials\ShaderGraphGrid_01_Mat.mat
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Art\Materials\ShaderGraphGrid_01_Mat.mat.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Art\Materials\ShaderGraphGrid_01_Mat.mat.meta
-      projectPath: Assets\Environment\Art\Materials\ShaderGraphGrid_01_Mat.mat.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Art\Models.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Art\Models.meta
-      projectPath: Assets\Environment\Art\Models.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Art\Models\Box_350x250x200_Mesh.fbx
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Art\Models\Box_350x250x200_Mesh.fbx
-      projectPath: Assets\Environment\Art\Models\Box_350x250x200_Mesh.fbx
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Art\Models\Box_350x250x200_Mesh.fbx.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Art\Models\Box_350x250x200_Mesh.fbx.meta
-      projectPath: Assets\Environment\Art\Models\Box_350x250x200_Mesh.fbx.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Art\Models\Box_350x250x300_Mesh.fbx
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Art\Models\Box_350x250x300_Mesh.fbx
-      projectPath: Assets\Environment\Art\Models\Box_350x250x300_Mesh.fbx
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Art\Models\Box_350x250x300_Mesh.fbx.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Art\Models\Box_350x250x300_Mesh.fbx.meta
-      projectPath: Assets\Environment\Art\Models\Box_350x250x300_Mesh.fbx.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Art\Models\Ground_Mesh.fbx
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Art\Models\Ground_Mesh.fbx
-      projectPath: Assets\Environment\Art\Models\Ground_Mesh.fbx
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Art\Models\Ground_Mesh.fbx.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Art\Models\Ground_Mesh.fbx.meta
-      projectPath: Assets\Environment\Art\Models\Ground_Mesh.fbx.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Art\Models\Ramp_100x100x200_Mesh.fbx
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Art\Models\Ramp_100x100x200_Mesh.fbx
-      projectPath: Assets\Environment\Art\Models\Ramp_100x100x200_Mesh.fbx
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Art\Models\Ramp_100x100x200_Mesh.fbx.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Art\Models\Ramp_100x100x200_Mesh.fbx.meta
-      projectPath: Assets\Environment\Art\Models\Ramp_100x100x200_Mesh.fbx.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Art\Models\Ramp_Mesh.fbx
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Art\Models\Ramp_Mesh.fbx
-      projectPath: Assets\Environment\Art\Models\Ramp_Mesh.fbx
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Art\Models\Ramp_Mesh.fbx.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Art\Models\Ramp_Mesh.fbx.meta
-      projectPath: Assets\Environment\Art\Models\Ramp_Mesh.fbx.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Art\Models\Stairs_200x100x200_Mesh.fbx
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Art\Models\Stairs_200x100x200_Mesh.fbx
-      projectPath: Assets\Environment\Art\Models\Stairs_200x100x200_Mesh.fbx
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Art\Models\Stairs_200x100x200_Mesh.fbx.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Art\Models\Stairs_200x100x200_Mesh.fbx.meta
-      projectPath: Assets\Environment\Art\Models\Stairs_200x100x200_Mesh.fbx.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Art\Models\Stairs_650_400_300_Mesh.fbx
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Art\Models\Stairs_650_400_300_Mesh.fbx
-      projectPath: Assets\Environment\Art\Models\Stairs_650_400_300_Mesh.fbx
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Art\Models\Stairs_650_400_300_Mesh.fbx.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Art\Models\Stairs_650_400_300_Mesh.fbx.meta
-      projectPath: Assets\Environment\Art\Models\Stairs_650_400_300_Mesh.fbx.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Art\Models\Structure_Mesh.fbx
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Art\Models\Structure_Mesh.fbx
-      projectPath: Assets\Environment\Art\Models\Structure_Mesh.fbx
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Art\Models\Structure_Mesh.fbx.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Art\Models\Structure_Mesh.fbx.meta
-      projectPath: Assets\Environment\Art\Models\Structure_Mesh.fbx.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Art\Models\Tunnel_Mesh.fbx
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Art\Models\Tunnel_Mesh.fbx
-      projectPath: Assets\Environment\Art\Models\Tunnel_Mesh.fbx
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Art\Models\Tunnel_Mesh.fbx.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Art\Models\Tunnel_Mesh.fbx.meta
-      projectPath: Assets\Environment\Art\Models\Tunnel_Mesh.fbx.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Art\Models\Wall_Mesh.fbx
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Art\Models\Wall_Mesh.fbx
-      projectPath: Assets\Environment\Art\Models\Wall_Mesh.fbx
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Art\Models\Wall_Mesh.fbx.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Art\Models\Wall_Mesh.fbx.meta
-      projectPath: Assets\Environment\Art\Models\Wall_Mesh.fbx.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Art\Skybox.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Art\Skybox.meta
-      projectPath: Assets\Environment\Art\Skybox.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Art\Skybox\SkyboxLite.mat
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Art\Skybox\SkyboxLite.mat
-      projectPath: Assets\Environment\Art\Skybox\SkyboxLite.mat
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Art\Skybox\SkyboxLite.mat.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Art\Skybox\SkyboxLite.mat.meta
-      projectPath: Assets\Environment\Art\Skybox\SkyboxLite.mat.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Art\Skybox\SkyboxLiteWarm.mat
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Art\Skybox\SkyboxLiteWarm.mat
-      projectPath: Assets\Environment\Art\Skybox\SkyboxLiteWarm.mat
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Art\Skybox\SkyboxLiteWarm.mat.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Art\Skybox\SkyboxLiteWarm.mat.meta
-      projectPath: Assets\Environment\Art\Skybox\SkyboxLiteWarm.mat.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Art\Textures.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Art\Textures.meta
-      projectPath: Assets\Environment\Art\Textures.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Art\Textures\Grid_01_BaseMap.png
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Art\Textures\Grid_01_BaseMap.png
-      projectPath: Assets\Environment\Art\Textures\Grid_01_BaseMap.png
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Art\Textures\Grid_01_BaseMap.png.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Art\Textures\Grid_01_BaseMap.png.meta
-      projectPath: Assets\Environment\Art\Textures\Grid_01_BaseMap.png.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Art\Textures\Grid_01_Emissive.png
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Art\Textures\Grid_01_Emissive.png
-      projectPath: Assets\Environment\Art\Textures\Grid_01_Emissive.png
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Art\Textures\Grid_01_Emissive.png.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Art\Textures\Grid_01_Emissive.png.meta
-      projectPath: Assets\Environment\Art\Textures\Grid_01_Emissive.png.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Art\Textures\Grid_01_Normal.png
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Art\Textures\Grid_01_Normal.png
-      projectPath: Assets\Environment\Art\Textures\Grid_01_Normal.png
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Art\Textures\Grid_01_Normal.png.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Art\Textures\Grid_01_Normal.png.meta
-      projectPath: Assets\Environment\Art\Textures\Grid_01_Normal.png.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Art\Textures\Grid_02_BaseMap.png
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Art\Textures\Grid_02_BaseMap.png
-      projectPath: Assets\Environment\Art\Textures\Grid_02_BaseMap.png
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Art\Textures\Grid_02_BaseMap.png.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Art\Textures\Grid_02_BaseMap.png.meta
-      projectPath: Assets\Environment\Art\Textures\Grid_02_BaseMap.png.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Prefabs.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Prefabs.meta
-      projectPath: Assets\Environment\Prefabs.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Prefabs\Box_100x100x100_Prefab.prefab
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Prefabs\Box_100x100x100_Prefab.prefab
-      projectPath: Assets\Environment\Prefabs\Box_100x100x100_Prefab.prefab
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Prefabs\Box_100x100x100_Prefab.prefab.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Prefabs\Box_100x100x100_Prefab.prefab.meta
-      projectPath: Assets\Environment\Prefabs\Box_100x100x100_Prefab.prefab.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Prefabs\Box_100x100x100_Prefab_Pushable.prefab
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Prefabs\Box_100x100x100_Prefab_Pushable.prefab
-      projectPath: Assets\Environment\Prefabs\Box_100x100x100_Prefab_Pushable.prefab
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Prefabs\Box_100x100x100_Prefab_Pushable.prefab.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Prefabs\Box_100x100x100_Prefab_Pushable.prefab.meta
-      projectPath: Assets\Environment\Prefabs\Box_100x100x100_Prefab_Pushable.prefab.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Prefabs\Box_350x250x200_Prefab.prefab
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Prefabs\Box_350x250x200_Prefab.prefab
-      projectPath: Assets\Environment\Prefabs\Box_350x250x200_Prefab.prefab
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Prefabs\Box_350x250x200_Prefab.prefab.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Prefabs\Box_350x250x200_Prefab.prefab.meta
-      projectPath: Assets\Environment\Prefabs\Box_350x250x200_Prefab.prefab.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Prefabs\Box_350x250x300_Prefab.prefab
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Prefabs\Box_350x250x300_Prefab.prefab
-      projectPath: Assets\Environment\Prefabs\Box_350x250x300_Prefab.prefab
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Prefabs\Box_350x250x300_Prefab.prefab.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Prefabs\Box_350x250x300_Prefab.prefab.meta
-      projectPath: Assets\Environment\Prefabs\Box_350x250x300_Prefab.prefab.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Prefabs\Environment_Prefab.prefab
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Prefabs\Environment_Prefab.prefab
-      projectPath: Assets\Environment\Prefabs\Environment_Prefab.prefab
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Prefabs\Environment_Prefab.prefab.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Prefabs\Environment_Prefab.prefab.meta
-      projectPath: Assets\Environment\Prefabs\Environment_Prefab.prefab.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Prefabs\Ramp_Prefab.prefab
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Prefabs\Ramp_Prefab.prefab
-      projectPath: Assets\Environment\Prefabs\Ramp_Prefab.prefab
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Prefabs\Ramp_Prefab.prefab.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Prefabs\Ramp_Prefab.prefab.meta
-      projectPath: Assets\Environment\Prefabs\Ramp_Prefab.prefab.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Prefabs\ResetPlane.prefab
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Prefabs\ResetPlane.prefab
-      projectPath: Assets\Environment\Prefabs\ResetPlane.prefab
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Prefabs\ResetPlane.prefab.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Prefabs\ResetPlane.prefab.meta
-      projectPath: Assets\Environment\Prefabs\ResetPlane.prefab.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Prefabs\Stairs_200x100x200_Prefab.prefab
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Prefabs\Stairs_200x100x200_Prefab.prefab
-      projectPath: Assets\Environment\Prefabs\Stairs_200x100x200_Prefab.prefab
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Prefabs\Stairs_200x100x200_Prefab.prefab.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Prefabs\Stairs_200x100x200_Prefab.prefab.meta
-      projectPath: Assets\Environment\Prefabs\Stairs_200x100x200_Prefab.prefab.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Prefabs\Stairs_650_400_300_Prefab.prefab
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Prefabs\Stairs_650_400_300_Prefab.prefab
-      projectPath: Assets\Environment\Prefabs\Stairs_650_400_300_Prefab.prefab
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Prefabs\Stairs_650_400_300_Prefab.prefab.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Prefabs\Stairs_650_400_300_Prefab.prefab.meta
-      projectPath: Assets\Environment\Prefabs\Stairs_650_400_300_Prefab.prefab.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Prefabs\Structure_Prefab.prefab
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Prefabs\Structure_Prefab.prefab
-      projectPath: Assets\Environment\Prefabs\Structure_Prefab.prefab
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Prefabs\Structure_Prefab.prefab.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Prefabs\Structure_Prefab.prefab.meta
-      projectPath: Assets\Environment\Prefabs\Structure_Prefab.prefab.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Prefabs\Tunnel_Prefab.prefab
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Prefabs\Tunnel_Prefab.prefab
-      projectPath: Assets\Environment\Prefabs\Tunnel_Prefab.prefab
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Prefabs\Tunnel_Prefab.prefab.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Prefabs\Tunnel_Prefab.prefab.meta
-      projectPath: Assets\Environment\Prefabs\Tunnel_Prefab.prefab.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Prefabs\Wall_Prefab.prefab
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Prefabs\Wall_Prefab.prefab
-      projectPath: Assets\Environment\Prefabs\Wall_Prefab.prefab
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Prefabs\Wall_Prefab.prefab.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Prefabs\Wall_Prefab.prefab.meta
-      projectPath: Assets\Environment\Prefabs\Wall_Prefab.prefab.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Shaders.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Shaders.meta
-      projectPath: Assets\Environment\Shaders.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Shaders\UrpTriplanar.shadergraph
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Shaders\UrpTriplanar.shadergraph
-      projectPath: Assets\Environment\Shaders\UrpTriplanar.shadergraph
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Environment\Shaders\UrpTriplanar.shadergraph.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Environment\Shaders\UrpTriplanar.shadergraph.meta
-      projectPath: Assets\Environment\Shaders\UrpTriplanar.shadergraph.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\InputSystem.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\InputSystem.meta
-      projectPath: Assets\InputSystem.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\InputSystem\StarterAssets.inputactions
-      fullPath: O:\UnityHub\Grappling Game\Assets\InputSystem\StarterAssets.inputactions
-      projectPath: Assets\InputSystem\StarterAssets.inputactions
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\InputSystem\StarterAssets.inputactions.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\InputSystem\StarterAssets.inputactions.meta
-      projectPath: Assets\InputSystem\StarterAssets.inputactions.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\InputSystem\StarterAssets.inputsettings.asset
-      fullPath: O:\UnityHub\Grappling Game\Assets\InputSystem\StarterAssets.inputsettings.asset
-      projectPath: Assets\InputSystem\StarterAssets.inputsettings.asset
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\InputSystem\StarterAssets.inputsettings.asset.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\InputSystem\StarterAssets.inputsettings.asset.meta
-      projectPath: Assets\InputSystem\StarterAssets.inputsettings.asset.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\InputSystem\StarterAssetsInputs.cs
-      fullPath: O:\UnityHub\Grappling Game\Assets\InputSystem\StarterAssetsInputs.cs
-      projectPath: Assets\InputSystem\StarterAssetsInputs.cs
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\InputSystem\StarterAssetsInputs.cs.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\InputSystem\StarterAssetsInputs.cs.meta
-      projectPath: Assets\InputSystem\StarterAssetsInputs.cs.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\license.txt
-      fullPath: O:\UnityHub\Grappling Game\Assets\license.txt
-      projectPath: Assets\license.txt
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\license.txt.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\license.txt.meta
-      projectPath: Assets\license.txt.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Mobile.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Mobile.meta
-      projectPath: Assets\Mobile.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Mobile\Prefabs.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Mobile\Prefabs.meta
-      projectPath: Assets\Mobile\Prefabs.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Mobile\Prefabs\CanvasInputs.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Mobile\Prefabs\CanvasInputs.meta
-      projectPath: Assets\Mobile\Prefabs\CanvasInputs.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Mobile\Prefabs\CanvasInputs\UI_Canvas_StarterAssetsInputs_Joysticks.prefab
-      fullPath: O:\UnityHub\Grappling Game\Assets\Mobile\Prefabs\CanvasInputs\UI_Canvas_StarterAssetsInputs_Joysticks.prefab
-      projectPath: Assets\Mobile\Prefabs\CanvasInputs\UI_Canvas_StarterAssetsInputs_Joysticks.prefab
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Mobile\Prefabs\CanvasInputs\UI_Canvas_StarterAssetsInputs_Joysticks.prefab.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Mobile\Prefabs\CanvasInputs\UI_Canvas_StarterAssetsInputs_Joysticks.prefab.meta
-      projectPath: Assets\Mobile\Prefabs\CanvasInputs\UI_Canvas_StarterAssetsInputs_Joysticks.prefab.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Mobile\Prefabs\CanvasInputs\UI_Canvas_StarterAssetsInputs_TouchZones.prefab
-      fullPath: O:\UnityHub\Grappling Game\Assets\Mobile\Prefabs\CanvasInputs\UI_Canvas_StarterAssetsInputs_TouchZones.prefab
-      projectPath: Assets\Mobile\Prefabs\CanvasInputs\UI_Canvas_StarterAssetsInputs_TouchZones.prefab
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Mobile\Prefabs\CanvasInputs\UI_Canvas_StarterAssetsInputs_TouchZones.prefab.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Mobile\Prefabs\CanvasInputs\UI_Canvas_StarterAssetsInputs_TouchZones.prefab.meta
-      projectPath: Assets\Mobile\Prefabs\CanvasInputs\UI_Canvas_StarterAssetsInputs_TouchZones.prefab.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Mobile\Prefabs\EventSystem.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Mobile\Prefabs\EventSystem.meta
-      projectPath: Assets\Mobile\Prefabs\EventSystem.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Mobile\Prefabs\EventSystem\UI_EventSystem.prefab
-      fullPath: O:\UnityHub\Grappling Game\Assets\Mobile\Prefabs\EventSystem\UI_EventSystem.prefab
-      projectPath: Assets\Mobile\Prefabs\EventSystem\UI_EventSystem.prefab
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Mobile\Prefabs\EventSystem\UI_EventSystem.prefab.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Mobile\Prefabs\EventSystem\UI_EventSystem.prefab.meta
-      projectPath: Assets\Mobile\Prefabs\EventSystem\UI_EventSystem.prefab.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Mobile\Prefabs\VirtualInputs.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Mobile\Prefabs\VirtualInputs.meta
-      projectPath: Assets\Mobile\Prefabs\VirtualInputs.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Mobile\Prefabs\VirtualInputs\UI_Virtual_Button.prefab
-      fullPath: O:\UnityHub\Grappling Game\Assets\Mobile\Prefabs\VirtualInputs\UI_Virtual_Button.prefab
-      projectPath: Assets\Mobile\Prefabs\VirtualInputs\UI_Virtual_Button.prefab
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Mobile\Prefabs\VirtualInputs\UI_Virtual_Button.prefab.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Mobile\Prefabs\VirtualInputs\UI_Virtual_Button.prefab.meta
-      projectPath: Assets\Mobile\Prefabs\VirtualInputs\UI_Virtual_Button.prefab.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Mobile\Prefabs\VirtualInputs\UI_Virtual_Joystick.prefab
-      fullPath: O:\UnityHub\Grappling Game\Assets\Mobile\Prefabs\VirtualInputs\UI_Virtual_Joystick.prefab
-      projectPath: Assets\Mobile\Prefabs\VirtualInputs\UI_Virtual_Joystick.prefab
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Mobile\Prefabs\VirtualInputs\UI_Virtual_Joystick.prefab.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Mobile\Prefabs\VirtualInputs\UI_Virtual_Joystick.prefab.meta
-      projectPath: Assets\Mobile\Prefabs\VirtualInputs\UI_Virtual_Joystick.prefab.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Mobile\Prefabs\VirtualInputs\UI_Virtual_TouchZone.prefab
-      fullPath: O:\UnityHub\Grappling Game\Assets\Mobile\Prefabs\VirtualInputs\UI_Virtual_TouchZone.prefab
-      projectPath: Assets\Mobile\Prefabs\VirtualInputs\UI_Virtual_TouchZone.prefab
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Mobile\Prefabs\VirtualInputs\UI_Virtual_TouchZone.prefab.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Mobile\Prefabs\VirtualInputs\UI_Virtual_TouchZone.prefab.meta
-      projectPath: Assets\Mobile\Prefabs\VirtualInputs\UI_Virtual_TouchZone.prefab.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Mobile\Scripts.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Mobile\Scripts.meta
-      projectPath: Assets\Mobile\Scripts.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Mobile\Scripts\CanvasInputs.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Mobile\Scripts\CanvasInputs.meta
-      projectPath: Assets\Mobile\Scripts\CanvasInputs.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Mobile\Scripts\CanvasInputs\UICanvasControllerInput.cs
-      fullPath: O:\UnityHub\Grappling Game\Assets\Mobile\Scripts\CanvasInputs\UICanvasControllerInput.cs
-      projectPath: Assets\Mobile\Scripts\CanvasInputs\UICanvasControllerInput.cs
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Mobile\Scripts\CanvasInputs\UICanvasControllerInput.cs.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Mobile\Scripts\CanvasInputs\UICanvasControllerInput.cs.meta
-      projectPath: Assets\Mobile\Scripts\CanvasInputs\UICanvasControllerInput.cs.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Mobile\Scripts\Utilities.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Mobile\Scripts\Utilities.meta
-      projectPath: Assets\Mobile\Scripts\Utilities.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Mobile\Scripts\Utilities\MobileDisableAutoSwitchControls.cs
-      fullPath: O:\UnityHub\Grappling Game\Assets\Mobile\Scripts\Utilities\MobileDisableAutoSwitchControls.cs
-      projectPath: Assets\Mobile\Scripts\Utilities\MobileDisableAutoSwitchControls.cs
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Mobile\Scripts\Utilities\MobileDisableAutoSwitchControls.cs.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Mobile\Scripts\Utilities\MobileDisableAutoSwitchControls.cs.meta
-      projectPath: Assets\Mobile\Scripts\Utilities\MobileDisableAutoSwitchControls.cs.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Mobile\Scripts\VirtualInputs.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Mobile\Scripts\VirtualInputs.meta
-      projectPath: Assets\Mobile\Scripts\VirtualInputs.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Mobile\Scripts\VirtualInputs\UIVirtualButton.cs
-      fullPath: O:\UnityHub\Grappling Game\Assets\Mobile\Scripts\VirtualInputs\UIVirtualButton.cs
-      projectPath: Assets\Mobile\Scripts\VirtualInputs\UIVirtualButton.cs
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Mobile\Scripts\VirtualInputs\UIVirtualButton.cs.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Mobile\Scripts\VirtualInputs\UIVirtualButton.cs.meta
-      projectPath: Assets\Mobile\Scripts\VirtualInputs\UIVirtualButton.cs.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Mobile\Scripts\VirtualInputs\UIVirtualJoystick.cs
-      fullPath: O:\UnityHub\Grappling Game\Assets\Mobile\Scripts\VirtualInputs\UIVirtualJoystick.cs
-      projectPath: Assets\Mobile\Scripts\VirtualInputs\UIVirtualJoystick.cs
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Mobile\Scripts\VirtualInputs\UIVirtualJoystick.cs.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Mobile\Scripts\VirtualInputs\UIVirtualJoystick.cs.meta
-      projectPath: Assets\Mobile\Scripts\VirtualInputs\UIVirtualJoystick.cs.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Mobile\Scripts\VirtualInputs\UIVirtualTouchZone.cs
-      fullPath: O:\UnityHub\Grappling Game\Assets\Mobile\Scripts\VirtualInputs\UIVirtualTouchZone.cs
-      projectPath: Assets\Mobile\Scripts\VirtualInputs\UIVirtualTouchZone.cs
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Mobile\Scripts\VirtualInputs\UIVirtualTouchZone.cs.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Mobile\Scripts\VirtualInputs\UIVirtualTouchZone.cs.meta
-      projectPath: Assets\Mobile\Scripts\VirtualInputs\UIVirtualTouchZone.cs.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Mobile\UI.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Mobile\UI.meta
-      projectPath: Assets\Mobile\UI.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Mobile\UI\UI_Circle_Bevel_Base.png
-      fullPath: O:\UnityHub\Grappling Game\Assets\Mobile\UI\UI_Circle_Bevel_Base.png
-      projectPath: Assets\Mobile\UI\UI_Circle_Bevel_Base.png
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Mobile\UI\UI_Circle_Bevel_Base.png.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Mobile\UI\UI_Circle_Bevel_Base.png.meta
-      projectPath: Assets\Mobile\UI\UI_Circle_Bevel_Base.png.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Mobile\UI\UI_Circle_Faded.png
-      fullPath: O:\UnityHub\Grappling Game\Assets\Mobile\UI\UI_Circle_Faded.png
-      projectPath: Assets\Mobile\UI\UI_Circle_Faded.png
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Mobile\UI\UI_Circle_Faded.png.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Mobile\UI\UI_Circle_Faded.png.meta
-      projectPath: Assets\Mobile\UI\UI_Circle_Faded.png.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Mobile\UI\UI_Icon_Jump.png
-      fullPath: O:\UnityHub\Grappling Game\Assets\Mobile\UI\UI_Icon_Jump.png
-      projectPath: Assets\Mobile\UI\UI_Icon_Jump.png
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Mobile\UI\UI_Icon_Jump.png.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Mobile\UI\UI_Icon_Jump.png.meta
-      projectPath: Assets\Mobile\UI\UI_Icon_Jump.png.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Mobile\UI\UI_Icon_Look.png
-      fullPath: O:\UnityHub\Grappling Game\Assets\Mobile\UI\UI_Icon_Look.png
-      projectPath: Assets\Mobile\UI\UI_Icon_Look.png
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Mobile\UI\UI_Icon_Look.png.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Mobile\UI\UI_Icon_Look.png.meta
-      projectPath: Assets\Mobile\UI\UI_Icon_Look.png.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Mobile\UI\UI_Icon_Move.png
-      fullPath: O:\UnityHub\Grappling Game\Assets\Mobile\UI\UI_Icon_Move.png
-      projectPath: Assets\Mobile\UI\UI_Icon_Move.png
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Mobile\UI\UI_Icon_Move.png.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Mobile\UI\UI_Icon_Move.png.meta
-      projectPath: Assets\Mobile\UI\UI_Icon_Move.png.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Mobile\UI\UI_Icon_Sprint.png
-      fullPath: O:\UnityHub\Grappling Game\Assets\Mobile\UI\UI_Icon_Sprint.png
-      projectPath: Assets\Mobile\UI\UI_Icon_Sprint.png
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Mobile\UI\UI_Icon_Sprint.png.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Mobile\UI\UI_Icon_Sprint.png.meta
-      projectPath: Assets\Mobile\UI\UI_Icon_Sprint.png.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Plugins.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Plugins.meta
-      projectPath: Assets\Plugins.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Plugins\GitHub.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Plugins\GitHub.meta
-      projectPath: Assets\Plugins\GitHub.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Plugins\GitHub\Editor.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Plugins\GitHub\Editor.meta
-      projectPath: Assets\Plugins\GitHub\Editor.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Plugins\GitHub\Editor\AsyncBridge.Net35.dll
-      fullPath: O:\UnityHub\Grappling Game\Assets\Plugins\GitHub\Editor\AsyncBridge.Net35.dll
-      projectPath: Assets\Plugins\GitHub\Editor\AsyncBridge.Net35.dll
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Plugins\GitHub\Editor\AsyncBridge.Net35.dll.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Plugins\GitHub\Editor\AsyncBridge.Net35.dll.meta
-      projectPath: Assets\Plugins\GitHub\Editor\AsyncBridge.Net35.dll.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Plugins\GitHub\Editor\big-logo@2x.png
-      fullPath: O:\UnityHub\Grappling Game\Assets\Plugins\GitHub\Editor\big-logo@2x.png
-      projectPath: Assets\Plugins\GitHub\Editor\big-logo@2x.png
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Plugins\GitHub\Editor\big-logo@2x.png.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Plugins\GitHub\Editor\big-logo@2x.png.meta
-      projectPath: Assets\Plugins\GitHub\Editor\big-logo@2x.png.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Plugins\GitHub\Editor\credits.txt
-      fullPath: O:\UnityHub\Grappling Game\Assets\Plugins\GitHub\Editor\credits.txt
-      projectPath: Assets\Plugins\GitHub\Editor\credits.txt
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Plugins\GitHub\Editor\credits.txt.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Plugins\GitHub\Editor\credits.txt.meta
-      projectPath: Assets\Plugins\GitHub\Editor\credits.txt.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Plugins\GitHub\Editor\eula.txt
-      fullPath: O:\UnityHub\Grappling Game\Assets\Plugins\GitHub\Editor\eula.txt
-      projectPath: Assets\Plugins\GitHub\Editor\eula.txt
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Plugins\GitHub\Editor\eula.txt.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Plugins\GitHub\Editor\eula.txt.meta
-      projectPath: Assets\Plugins\GitHub\Editor\eula.txt.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Plugins\GitHub\Editor\ExtensionLoader.cs
-      fullPath: O:\UnityHub\Grappling Game\Assets\Plugins\GitHub\Editor\ExtensionLoader.cs
-      projectPath: Assets\Plugins\GitHub\Editor\ExtensionLoader.cs
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Plugins\GitHub\Editor\ExtensionLoader.cs.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Plugins\GitHub\Editor\ExtensionLoader.cs.meta
-      projectPath: Assets\Plugins\GitHub\Editor\ExtensionLoader.cs.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Plugins\GitHub\Editor\GitHub.Api.45.dll
-      fullPath: O:\UnityHub\Grappling Game\Assets\Plugins\GitHub\Editor\GitHub.Api.45.dll
-      projectPath: Assets\Plugins\GitHub\Editor\GitHub.Api.45.dll
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Plugins\GitHub\Editor\GitHub.Api.45.dll.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Plugins\GitHub\Editor\GitHub.Api.45.dll.meta
-      projectPath: Assets\Plugins\GitHub\Editor\GitHub.Api.45.dll.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Plugins\GitHub\Editor\GitHub.Api.dll
-      fullPath: O:\UnityHub\Grappling Game\Assets\Plugins\GitHub\Editor\GitHub.Api.dll
-      projectPath: Assets\Plugins\GitHub\Editor\GitHub.Api.dll
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Plugins\GitHub\Editor\GitHub.Api.dll.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Plugins\GitHub\Editor\GitHub.Api.dll.meta
-      projectPath: Assets\Plugins\GitHub\Editor\GitHub.Api.dll.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Plugins\GitHub\Editor\GitHub.Logging.dll
-      fullPath: O:\UnityHub\Grappling Game\Assets\Plugins\GitHub\Editor\GitHub.Logging.dll
-      projectPath: Assets\Plugins\GitHub\Editor\GitHub.Logging.dll
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Plugins\GitHub\Editor\GitHub.Logging.dll.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Plugins\GitHub\Editor\GitHub.Logging.dll.meta
-      projectPath: Assets\Plugins\GitHub\Editor\GitHub.Logging.dll.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Plugins\GitHub\Editor\GitHub.Unity.45.dll
-      fullPath: O:\UnityHub\Grappling Game\Assets\Plugins\GitHub\Editor\GitHub.Unity.45.dll
-      projectPath: Assets\Plugins\GitHub\Editor\GitHub.Unity.45.dll
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Plugins\GitHub\Editor\GitHub.Unity.45.dll.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Plugins\GitHub\Editor\GitHub.Unity.45.dll.meta
-      projectPath: Assets\Plugins\GitHub\Editor\GitHub.Unity.45.dll.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Plugins\GitHub\Editor\GitHub.Unity.dll
-      fullPath: O:\UnityHub\Grappling Game\Assets\Plugins\GitHub\Editor\GitHub.Unity.dll
-      projectPath: Assets\Plugins\GitHub\Editor\GitHub.Unity.dll
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Plugins\GitHub\Editor\GitHub.Unity.dll.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Plugins\GitHub\Editor\GitHub.Unity.dll.meta
-      projectPath: Assets\Plugins\GitHub\Editor\GitHub.Unity.dll.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Plugins\GitHub\Editor\GitHub.UnityShim.dll
-      fullPath: O:\UnityHub\Grappling Game\Assets\Plugins\GitHub\Editor\GitHub.UnityShim.dll
-      projectPath: Assets\Plugins\GitHub\Editor\GitHub.UnityShim.dll
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Plugins\GitHub\Editor\GitHub.UnityShim.dll.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Plugins\GitHub\Editor\GitHub.UnityShim.dll.meta
-      projectPath: Assets\Plugins\GitHub\Editor\GitHub.UnityShim.dll.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Plugins\GitHub\Editor\libsfw.bundle
-      fullPath: O:\UnityHub\Grappling Game\Assets\Plugins\GitHub\Editor\libsfw.bundle
-      projectPath: Assets\Plugins\GitHub\Editor\libsfw.bundle
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Plugins\GitHub\Editor\libsfw.bundle.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Plugins\GitHub\Editor\libsfw.bundle.meta
-      projectPath: Assets\Plugins\GitHub\Editor\libsfw.bundle.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Plugins\GitHub\Editor\libsfw.so
-      fullPath: O:\UnityHub\Grappling Game\Assets\Plugins\GitHub\Editor\libsfw.so
-      projectPath: Assets\Plugins\GitHub\Editor\libsfw.so
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Plugins\GitHub\Editor\libsfw.so.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Plugins\GitHub\Editor\libsfw.so.meta
-      projectPath: Assets\Plugins\GitHub\Editor\libsfw.so.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Plugins\GitHub\Editor\Mono.Posix.dll
-      fullPath: O:\UnityHub\Grappling Game\Assets\Plugins\GitHub\Editor\Mono.Posix.dll
-      projectPath: Assets\Plugins\GitHub\Editor\Mono.Posix.dll
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Plugins\GitHub\Editor\Mono.Posix.dll.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Plugins\GitHub\Editor\Mono.Posix.dll.meta
-      projectPath: Assets\Plugins\GitHub\Editor\Mono.Posix.dll.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Plugins\GitHub\Editor\QuickGuide.pdf
-      fullPath: O:\UnityHub\Grappling Game\Assets\Plugins\GitHub\Editor\QuickGuide.pdf
-      projectPath: Assets\Plugins\GitHub\Editor\QuickGuide.pdf
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Plugins\GitHub\Editor\QuickGuide.pdf.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Plugins\GitHub\Editor\QuickGuide.pdf.meta
-      projectPath: Assets\Plugins\GitHub\Editor\QuickGuide.pdf.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Plugins\GitHub\Editor\ReadOnlyCollectionsInterfaces.dll
-      fullPath: O:\UnityHub\Grappling Game\Assets\Plugins\GitHub\Editor\ReadOnlyCollectionsInterfaces.dll
-      projectPath: Assets\Plugins\GitHub\Editor\ReadOnlyCollectionsInterfaces.dll
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Plugins\GitHub\Editor\ReadOnlyCollectionsInterfaces.dll.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Plugins\GitHub\Editor\ReadOnlyCollectionsInterfaces.dll.meta
-      projectPath: Assets\Plugins\GitHub\Editor\ReadOnlyCollectionsInterfaces.dll.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Plugins\GitHub\Editor\sfw.net.dll
-      fullPath: O:\UnityHub\Grappling Game\Assets\Plugins\GitHub\Editor\sfw.net.dll
-      projectPath: Assets\Plugins\GitHub\Editor\sfw.net.dll
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Plugins\GitHub\Editor\sfw.net.dll.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Plugins\GitHub\Editor\sfw.net.dll.meta
-      projectPath: Assets\Plugins\GitHub\Editor\sfw.net.dll.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Plugins\GitHub\Editor\System.Threading.dll
-      fullPath: O:\UnityHub\Grappling Game\Assets\Plugins\GitHub\Editor\System.Threading.dll
-      projectPath: Assets\Plugins\GitHub\Editor\System.Threading.dll
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Plugins\GitHub\Editor\System.Threading.dll.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Plugins\GitHub\Editor\System.Threading.dll.meta
-      projectPath: Assets\Plugins\GitHub\Editor\System.Threading.dll.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Plugins\GitHub\Editor\UnityAPIWrapper.cs
-      fullPath: O:\UnityHub\Grappling Game\Assets\Plugins\GitHub\Editor\UnityAPIWrapper.cs
-      projectPath: Assets\Plugins\GitHub\Editor\UnityAPIWrapper.cs
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Plugins\GitHub\Editor\UnityAPIWrapper.cs.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Plugins\GitHub\Editor\UnityAPIWrapper.cs.meta
-      projectPath: Assets\Plugins\GitHub\Editor\UnityAPIWrapper.cs.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Plugins\GitHub\Editor\x64.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Plugins\GitHub\Editor\x64.meta
-      projectPath: Assets\Plugins\GitHub\Editor\x64.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Plugins\GitHub\Editor\x64\pthreadVC2.dll
-      fullPath: O:\UnityHub\Grappling Game\Assets\Plugins\GitHub\Editor\x64\pthreadVC2.dll
-      projectPath: Assets\Plugins\GitHub\Editor\x64\pthreadVC2.dll
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Plugins\GitHub\Editor\x64\pthreadVC2.dll.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Plugins\GitHub\Editor\x64\pthreadVC2.dll.meta
-      projectPath: Assets\Plugins\GitHub\Editor\x64\pthreadVC2.dll.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Plugins\GitHub\Editor\x64\sfw_x64.dll
-      fullPath: O:\UnityHub\Grappling Game\Assets\Plugins\GitHub\Editor\x64\sfw_x64.dll
-      projectPath: Assets\Plugins\GitHub\Editor\x64\sfw_x64.dll
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Plugins\GitHub\Editor\x64\sfw_x64.dll.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Plugins\GitHub\Editor\x64\sfw_x64.dll.meta
-      projectPath: Assets\Plugins\GitHub\Editor\x64\sfw_x64.dll.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Plugins\GitHub\Editor\x86.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Plugins\GitHub\Editor\x86.meta
-      projectPath: Assets\Plugins\GitHub\Editor\x86.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Plugins\GitHub\Editor\x86\pthreadVC2.dll
-      fullPath: O:\UnityHub\Grappling Game\Assets\Plugins\GitHub\Editor\x86\pthreadVC2.dll
-      projectPath: Assets\Plugins\GitHub\Editor\x86\pthreadVC2.dll
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Plugins\GitHub\Editor\x86\pthreadVC2.dll.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Plugins\GitHub\Editor\x86\pthreadVC2.dll.meta
-      projectPath: Assets\Plugins\GitHub\Editor\x86\pthreadVC2.dll.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Plugins\GitHub\Editor\x86\sfw_x86.dll
-      fullPath: O:\UnityHub\Grappling Game\Assets\Plugins\GitHub\Editor\x86\sfw_x86.dll
-      projectPath: Assets\Plugins\GitHub\Editor\x86\sfw_x86.dll
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Plugins\GitHub\Editor\x86\sfw_x86.dll.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Plugins\GitHub\Editor\x86\sfw_x86.dll.meta
-      projectPath: Assets\Plugins\GitHub\Editor\x86\sfw_x86.dll.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Prefabs.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Prefabs.meta
-      projectPath: Assets\Prefabs.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Prefabs\MainCamera.prefab
-      fullPath: O:\UnityHub\Grappling Game\Assets\Prefabs\MainCamera.prefab
-      projectPath: Assets\Prefabs\MainCamera.prefab
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Prefabs\MainCamera.prefab.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Prefabs\MainCamera.prefab.meta
-      projectPath: Assets\Prefabs\MainCamera.prefab.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Prefabs\NestedParent_Unpack.prefab
-      fullPath: O:\UnityHub\Grappling Game\Assets\Prefabs\NestedParent_Unpack.prefab
-      projectPath: Assets\Prefabs\NestedParent_Unpack.prefab
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Prefabs\NestedParent_Unpack.prefab.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Prefabs\NestedParent_Unpack.prefab.meta
-      projectPath: Assets\Prefabs\NestedParent_Unpack.prefab.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Prefabs\PlayerCapsule.prefab
-      fullPath: O:\UnityHub\Grappling Game\Assets\Prefabs\PlayerCapsule.prefab
-      projectPath: Assets\Prefabs\PlayerCapsule.prefab
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Prefabs\PlayerCapsule.prefab.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Prefabs\PlayerCapsule.prefab.meta
-      projectPath: Assets\Prefabs\PlayerCapsule.prefab.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Prefabs\PlayerFollowCamera.prefab
-      fullPath: O:\UnityHub\Grappling Game\Assets\Prefabs\PlayerFollowCamera.prefab
-      projectPath: Assets\Prefabs\PlayerFollowCamera.prefab
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Prefabs\PlayerFollowCamera.prefab.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Prefabs\PlayerFollowCamera.prefab.meta
-      projectPath: Assets\Prefabs\PlayerFollowCamera.prefab.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Readme.asset
-      fullPath: O:\UnityHub\Grappling Game\Assets\Readme.asset
-      projectPath: Assets\Readme.asset
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Readme.asset.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Readme.asset.meta
-      projectPath: Assets\Readme.asset.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Scenes.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Scenes.meta
-      projectPath: Assets\Scenes.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Scenes\Playground.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Scenes\Playground.meta
-      projectPath: Assets\Scenes\Playground.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Scenes\Playground.unity
-      fullPath: O:\UnityHub\Grappling Game\Assets\Scenes\Playground.unity
-      projectPath: Assets\Scenes\Playground.unity
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Scenes\Playground.unity.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Scenes\Playground.unity.meta
-      projectPath: Assets\Scenes\Playground.unity.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Scenes\Playground\LightingData.asset
-      fullPath: O:\UnityHub\Grappling Game\Assets\Scenes\Playground\LightingData.asset
-      projectPath: Assets\Scenes\Playground\LightingData.asset
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Scenes\Playground\LightingData.asset.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Scenes\Playground\LightingData.asset.meta
-      projectPath: Assets\Scenes\Playground\LightingData.asset.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Scenes\Playground\ReflectionProbe-0.exr
-      fullPath: O:\UnityHub\Grappling Game\Assets\Scenes\Playground\ReflectionProbe-0.exr
-      projectPath: Assets\Scenes\Playground\ReflectionProbe-0.exr
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Scenes\Playground\ReflectionProbe-0.exr.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Scenes\Playground\ReflectionProbe-0.exr.meta
-      projectPath: Assets\Scenes\Playground\ReflectionProbe-0.exr.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Scenes\Playground\ReflectionProbe-1.exr
-      fullPath: O:\UnityHub\Grappling Game\Assets\Scenes\Playground\ReflectionProbe-1.exr
-      projectPath: Assets\Scenes\Playground\ReflectionProbe-1.exr
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Scenes\Playground\ReflectionProbe-1.exr.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Scenes\Playground\ReflectionProbe-1.exr.meta
-      projectPath: Assets\Scenes\Playground\ReflectionProbe-1.exr.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Scenes\Playground\ReflectionProbe-2.exr
-      fullPath: O:\UnityHub\Grappling Game\Assets\Scenes\Playground\ReflectionProbe-2.exr
-      projectPath: Assets\Scenes\Playground\ReflectionProbe-2.exr
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Scenes\Playground\ReflectionProbe-2.exr.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Scenes\Playground\ReflectionProbe-2.exr.meta
-      projectPath: Assets\Scenes\Playground\ReflectionProbe-2.exr.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Scenes\PlaygroundSettings.lighting
-      fullPath: O:\UnityHub\Grappling Game\Assets\Scenes\PlaygroundSettings.lighting
-      projectPath: Assets\Scenes\PlaygroundSettings.lighting
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Scenes\PlaygroundSettings.lighting.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Scenes\PlaygroundSettings.lighting.meta
-      projectPath: Assets\Scenes\PlaygroundSettings.lighting.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Scenes\TestScene.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Scenes\TestScene.meta
-      projectPath: Assets\Scenes\TestScene.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Scenes\TestScene.lighting
-      fullPath: O:\UnityHub\Grappling Game\Assets\Scenes\TestScene.lighting
-      projectPath: Assets\Scenes\TestScene.lighting
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Scenes\TestScene.lighting.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Scenes\TestScene.lighting.meta
-      projectPath: Assets\Scenes\TestScene.lighting.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Scenes\TestScene.unity
-      fullPath: O:\UnityHub\Grappling Game\Assets\Scenes\TestScene.unity
-      projectPath: Assets\Scenes\TestScene.unity
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Scenes\TestScene.unity.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Scenes\TestScene.unity.meta
-      projectPath: Assets\Scenes\TestScene.unity.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Scenes\TestScene\LightingData.asset
-      fullPath: O:\UnityHub\Grappling Game\Assets\Scenes\TestScene\LightingData.asset
-      projectPath: Assets\Scenes\TestScene\LightingData.asset
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Scenes\TestScene\LightingData.asset.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Scenes\TestScene\LightingData.asset.meta
-      projectPath: Assets\Scenes\TestScene\LightingData.asset.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Scenes\TestScene\ReflectionProbe-0.exr
-      fullPath: O:\UnityHub\Grappling Game\Assets\Scenes\TestScene\ReflectionProbe-0.exr
-      projectPath: Assets\Scenes\TestScene\ReflectionProbe-0.exr
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Scenes\TestScene\ReflectionProbe-0.exr.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Scenes\TestScene\ReflectionProbe-0.exr.meta
-      projectPath: Assets\Scenes\TestScene\ReflectionProbe-0.exr.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Scenes\TestScene\ReflectionProbe-1.exr
-      fullPath: O:\UnityHub\Grappling Game\Assets\Scenes\TestScene\ReflectionProbe-1.exr
-      projectPath: Assets\Scenes\TestScene\ReflectionProbe-1.exr
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Scenes\TestScene\ReflectionProbe-1.exr.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Scenes\TestScene\ReflectionProbe-1.exr.meta
-      projectPath: Assets\Scenes\TestScene\ReflectionProbe-1.exr.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Scenes\TestScene\ReflectionProbe-2.exr
-      fullPath: O:\UnityHub\Grappling Game\Assets\Scenes\TestScene\ReflectionProbe-2.exr
-      projectPath: Assets\Scenes\TestScene\ReflectionProbe-2.exr
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Scenes\TestScene\ReflectionProbe-2.exr.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Scenes\TestScene\ReflectionProbe-2.exr.meta
-      projectPath: Assets\Scenes\TestScene\ReflectionProbe-2.exr.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Scripts.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Scripts.meta
-      projectPath: Assets\Scripts.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Scripts\BasicRigidBodyPush.cs
-      fullPath: O:\UnityHub\Grappling Game\Assets\Scripts\BasicRigidBodyPush.cs
-      projectPath: Assets\Scripts\BasicRigidBodyPush.cs
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Scripts\BasicRigidBodyPush.cs.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Scripts\BasicRigidBodyPush.cs.meta
-      projectPath: Assets\Scripts\BasicRigidBodyPush.cs.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Scripts\FirstPersonController.cs
-      fullPath: O:\UnityHub\Grappling Game\Assets\Scripts\FirstPersonController.cs
-      projectPath: Assets\Scripts\FirstPersonController.cs
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\Scripts\FirstPersonController.cs.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\Scripts\FirstPersonController.cs.meta
-      projectPath: Assets\Scripts\FirstPersonController.cs.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\StarterAssets_Documentation.pdf
-      fullPath: O:\UnityHub\Grappling Game\Assets\StarterAssets_Documentation.pdf
-      projectPath: Assets\StarterAssets_Documentation.pdf
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\StarterAssets_Documentation.pdf.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\StarterAssets_Documentation.pdf.meta
-      projectPath: Assets\StarterAssets_Documentation.pdf.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\TutorialInfo.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\TutorialInfo.meta
-      projectPath: Assets\TutorialInfo.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\TutorialInfo\Icons.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\TutorialInfo\Icons.meta
-      projectPath: Assets\TutorialInfo\Icons.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\TutorialInfo\Icons\ReadMeImg.PNG
-      fullPath: O:\UnityHub\Grappling Game\Assets\TutorialInfo\Icons\ReadMeImg.PNG
-      projectPath: Assets\TutorialInfo\Icons\ReadMeImg.PNG
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\TutorialInfo\Icons\ReadMeImg.PNG.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\TutorialInfo\Icons\ReadMeImg.PNG.meta
-      projectPath: Assets\TutorialInfo\Icons\ReadMeImg.PNG.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\TutorialInfo\Scripts.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\TutorialInfo\Scripts.meta
-      projectPath: Assets\TutorialInfo\Scripts.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\TutorialInfo\Scripts\Editor.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\TutorialInfo\Scripts\Editor.meta
-      projectPath: Assets\TutorialInfo\Scripts\Editor.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\TutorialInfo\Scripts\Editor\ReadmeEditor.cs
-      fullPath: O:\UnityHub\Grappling Game\Assets\TutorialInfo\Scripts\Editor\ReadmeEditor.cs
-      projectPath: Assets\TutorialInfo\Scripts\Editor\ReadmeEditor.cs
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\TutorialInfo\Scripts\Editor\ReadmeEditor.cs.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\TutorialInfo\Scripts\Editor\ReadmeEditor.cs.meta
-      projectPath: Assets\TutorialInfo\Scripts\Editor\ReadmeEditor.cs.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\TutorialInfo\Scripts\Readme.cs
-      fullPath: O:\UnityHub\Grappling Game\Assets\TutorialInfo\Scripts\Readme.cs
-      projectPath: Assets\TutorialInfo\Scripts\Readme.cs
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\TutorialInfo\Scripts\Readme.cs.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\TutorialInfo\Scripts\Readme.cs.meta
-      projectPath: Assets\TutorialInfo\Scripts\Readme.cs.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\UniversalRenderPipelineAsset.asset
-      fullPath: O:\UnityHub\Grappling Game\Assets\UniversalRenderPipelineAsset.asset
-      projectPath: Assets\UniversalRenderPipelineAsset.asset
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\UniversalRenderPipelineAsset.asset.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\UniversalRenderPipelineAsset.asset.meta
-      projectPath: Assets\UniversalRenderPipelineAsset.asset.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\UniversalRenderPipelineAsset_Renderer.asset
-      fullPath: O:\UnityHub\Grappling Game\Assets\UniversalRenderPipelineAsset_Renderer.asset
-      projectPath: Assets\UniversalRenderPipelineAsset_Renderer.asset
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\UniversalRenderPipelineAsset_Renderer.asset.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\UniversalRenderPipelineAsset_Renderer.asset.meta
-      projectPath: Assets\UniversalRenderPipelineAsset_Renderer.asset.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\UniversalRenderPipelineGlobalSettings.asset
-      fullPath: O:\UnityHub\Grappling Game\Assets\UniversalRenderPipelineGlobalSettings.asset
-      projectPath: Assets\UniversalRenderPipelineGlobalSettings.asset
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\UniversalRenderPipelineGlobalSettings.asset.meta
-      fullPath: O:\UnityHub\Grappling Game\Assets\UniversalRenderPipelineGlobalSettings.asset.meta
-      projectPath: Assets\UniversalRenderPipelineGlobalSettings.asset.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Packages\manifest.json
-      fullPath: O:\UnityHub\Grappling Game\Packages\manifest.json
-      projectPath: Packages\manifest.json
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Packages\packages-lock.json
-      fullPath: O:\UnityHub\Grappling Game\Packages\packages-lock.json
-      projectPath: Packages\packages-lock.json
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: ProjectSettings\AudioManager.asset
-      fullPath: O:\UnityHub\Grappling Game\ProjectSettings\AudioManager.asset
-      projectPath: ProjectSettings\AudioManager.asset
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: ProjectSettings\boot.config
-      fullPath: O:\UnityHub\Grappling Game\ProjectSettings\boot.config
-      projectPath: ProjectSettings\boot.config
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: ProjectSettings\ClusterInputManager.asset
-      fullPath: O:\UnityHub\Grappling Game\ProjectSettings\ClusterInputManager.asset
-      projectPath: ProjectSettings\ClusterInputManager.asset
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: ProjectSettings\DynamicsManager.asset
-      fullPath: O:\UnityHub\Grappling Game\ProjectSettings\DynamicsManager.asset
-      projectPath: ProjectSettings\DynamicsManager.asset
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: ProjectSettings\EditorBuildSettings.asset
-      fullPath: O:\UnityHub\Grappling Game\ProjectSettings\EditorBuildSettings.asset
-      projectPath: ProjectSettings\EditorBuildSettings.asset
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: ProjectSettings\EditorSettings.asset
-      fullPath: O:\UnityHub\Grappling Game\ProjectSettings\EditorSettings.asset
-      projectPath: ProjectSettings\EditorSettings.asset
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: ProjectSettings\GraphicsSettings.asset
-      fullPath: O:\UnityHub\Grappling Game\ProjectSettings\GraphicsSettings.asset
-      projectPath: ProjectSettings\GraphicsSettings.asset
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: ProjectSettings\InputManager.asset
-      fullPath: O:\UnityHub\Grappling Game\ProjectSettings\InputManager.asset
-      projectPath: ProjectSettings\InputManager.asset
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: ProjectSettings\MemorySettings.asset
-      fullPath: O:\UnityHub\Grappling Game\ProjectSettings\MemorySettings.asset
-      projectPath: ProjectSettings\MemorySettings.asset
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: ProjectSettings\NavMeshAreas.asset
-      fullPath: O:\UnityHub\Grappling Game\ProjectSettings\NavMeshAreas.asset
-      projectPath: ProjectSettings\NavMeshAreas.asset
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: ProjectSettings\PackageManagerSettings.asset
-      fullPath: O:\UnityHub\Grappling Game\ProjectSettings\PackageManagerSettings.asset
-      projectPath: ProjectSettings\PackageManagerSettings.asset
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: ProjectSettings\Packages\com.unity.testtools.codecoverage\Settings.json
-      fullPath: O:\UnityHub\Grappling Game\ProjectSettings\Packages\com.unity.testtools.codecoverage\Settings.json
-      projectPath: ProjectSettings\Packages\com.unity.testtools.codecoverage\Settings.json
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: ProjectSettings\Physics2DSettings.asset
-      fullPath: O:\UnityHub\Grappling Game\ProjectSettings\Physics2DSettings.asset
-      projectPath: ProjectSettings\Physics2DSettings.asset
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: ProjectSettings\PresetManager.asset
-      fullPath: O:\UnityHub\Grappling Game\ProjectSettings\PresetManager.asset
-      projectPath: ProjectSettings\PresetManager.asset
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: ProjectSettings\ProjectSettings.asset
-      fullPath: O:\UnityHub\Grappling Game\ProjectSettings\ProjectSettings.asset
-      projectPath: ProjectSettings\ProjectSettings.asset
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: ProjectSettings\ProjectVersion.txt
-      fullPath: O:\UnityHub\Grappling Game\ProjectSettings\ProjectVersion.txt
-      projectPath: ProjectSettings\ProjectVersion.txt
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: ProjectSettings\QualitySettings.asset
-      fullPath: O:\UnityHub\Grappling Game\ProjectSettings\QualitySettings.asset
-      projectPath: ProjectSettings\QualitySettings.asset
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: ProjectSettings\SceneTemplateSettings.json
-      fullPath: O:\UnityHub\Grappling Game\ProjectSettings\SceneTemplateSettings.json
-      projectPath: ProjectSettings\SceneTemplateSettings.json
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: ProjectSettings\ShaderGraphSettings.asset
-      fullPath: O:\UnityHub\Grappling Game\ProjectSettings\ShaderGraphSettings.asset
-      projectPath: ProjectSettings\ShaderGraphSettings.asset
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: ProjectSettings\TagManager.asset
-      fullPath: O:\UnityHub\Grappling Game\ProjectSettings\TagManager.asset
-      projectPath: ProjectSettings\TagManager.asset
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: ProjectSettings\TimeManager.asset
-      fullPath: O:\UnityHub\Grappling Game\ProjectSettings\TimeManager.asset
-      projectPath: ProjectSettings\TimeManager.asset
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: ProjectSettings\UnityConnectSettings.asset
-      fullPath: O:\UnityHub\Grappling Game\ProjectSettings\UnityConnectSettings.asset
-      projectPath: ProjectSettings\UnityConnectSettings.asset
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: ProjectSettings\URPProjectSettings.asset
-      fullPath: O:\UnityHub\Grappling Game\ProjectSettings\URPProjectSettings.asset
-      projectPath: ProjectSettings\URPProjectSettings.asset
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: ProjectSettings\VersionControlSettings.asset
-      fullPath: O:\UnityHub\Grappling Game\ProjectSettings\VersionControlSettings.asset
-      projectPath: ProjectSettings\VersionControlSettings.asset
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: ProjectSettings\VFXManager.asset
-      fullPath: O:\UnityHub\Grappling Game\ProjectSettings\VFXManager.asset
-      projectPath: ProjectSettings\VFXManager.asset
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: ProjectSettings\XRSettings.asset
-      fullPath: O:\UnityHub\Grappling Game\ProjectSettings\XRSettings.asset
-      projectPath: ProjectSettings\XRSettings.asset
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: UserSettings\EditorUserSettings.asset
-      fullPath: O:\UnityHub\Grappling Game\UserSettings\EditorUserSettings.asset
-      projectPath: UserSettings\EditorUserSettings.asset
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: UserSettings\Layouts\CurrentMaximizeLayout.dwlt
-      fullPath: O:\UnityHub\Grappling Game\UserSettings\Layouts\CurrentMaximizeLayout.dwlt
-      projectPath: UserSettings\Layouts\CurrentMaximizeLayout.dwlt
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: UserSettings\Layouts\default-2021.dwlt
-      fullPath: O:\UnityHub\Grappling Game\UserSettings\Layouts\default-2021.dwlt
-      projectPath: UserSettings\Layouts\default-2021.dwlt
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: UserSettings\Search.settings
-      fullPath: O:\UnityHub\Grappling Game\UserSettings\Search.settings
-      projectPath: UserSettings\Search.settings
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    currentUsername: amscott0
+    gitStatusEntries: []
+    currentUsername: 
     unlockFileMenuContent:
       m_Text: Release Lock
       m_Image: {fileID: 0}
@@ -2646,13 +721,13 @@ MonoBehaviour:
     m_Image: {fileID: 0}
     m_Tooltip: Url of the origin remote
   lastCurrentBranchAndRemoteChangedEvent:
-    updatedTimeString: 2022-10-26T02:36:03.596-06:00
+    updatedTimeString: 2022-10-26T02:52:57.934-06:00
     cacheType: 1
   lastTrackingStatusChangedEvent:
-    updatedTimeString: 2022-10-26T02:44:59.052-06:00
+    updatedTimeString: 2022-10-26T02:52:58.187-06:00
     cacheType: 5
   lastStatusEntriesChangedEvent:
-    updatedTimeString: 2022-10-26T02:44:59.036-06:00
+    updatedTimeString: 2022-10-26T02:55:07.710-06:00
     cacheType: 6
   pullButtonContent:
     m_Text: Pull
@@ -2673,9 +748,8 @@ MonoBehaviour:
   repositoryProgressValue: 0
   repositoryProgressMessage: 
   appManagerProgressValue: 1
-  appManagerProgressMessage: Initialized
-  connections: []
-  primaryConnectionUsername: amscott0
+  appManagerProgressMessage: 
+  primaryConnectionUsername: 
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -3104,7 +1178,7 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: 0.1488423, y: 0.6827246, z: -0.14499561, w: 0.70056087}
     speed: 2
-    m_Value: {x: 0.1488423, y: 0.68272465, z: -0.14499561, w: 0.70056087}
+    m_Value: {x: 0.14883664, y: 0.6826986, z: -0.1449901, w: 0.7005342}
   m_Size:
     m_Target: 2.7960901
     speed: 2
@@ -3188,9 +1262,9 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 30.333252}
-    m_SelectedIDs: 
-    m_LastClickedID: 0
-    m_ExpandedIDs: 000000001c73000000ca9a3bffffff7f
+    m_SelectedIDs: a2720000
+    m_LastClickedID: 29346
+    m_ExpandedIDs: 00000000e2740000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -3218,7 +1292,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000001c730000
+    m_ExpandedIDs: 00000000e2740000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

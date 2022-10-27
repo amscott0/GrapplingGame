@@ -51,8 +51,13 @@ namespace StarterAssets
 
 		[Tooltip("Initial speed of the player's dodge")]
 		public float DodgeDistance = 50.0f;
-		[Tooltip("Maximum speed of the player's dodge")]
-		public float DodgeSpeed = 2.0f;
+		[Tooltip("Dodge slow down speed (higher values decrease speed quicker)")]
+		public float DodgeSlowSpeed = 2.0f;
+
+		[Tooltip("Duration of the player's slide")]
+		public float SlideDuration;
+		[Tooltip("Modifier for the player's slide")]
+		public float SlideModifier = 1.25f;
 
 		[Header("Player Grounded")]
 		[Tooltip("If the character is grounded or not. Not part of the CharacterController built in grounded check")]
@@ -63,6 +68,8 @@ namespace StarterAssets
 		public float GroundedRadius = 0.5f;
 		[Tooltip("What layers the character uses as ground")]
 		public LayerMask GroundLayers;
+		[Tooltip("How long the player has to be on the ground before GroundedSpeedModifier takes effect")]
+		public float GroundedTime = 0.1f;
 
 		[Header("Cinemachine")]
 		[Tooltip("The follow target set in the Cinemachine Virtual Camera that the camera will follow")]
@@ -87,8 +94,12 @@ namespace StarterAssets
 		private float _jumpTimeoutDelta;
 		private float _fallTimeoutDelta;
 		private float _dodgeTimeoutDelta;
+		private float _slideTime;
 
 		private Vector3 _previousDirection; //previous direction that was moved in
+		private Vector3 _slideMovement;
+		private Vector3 _cameraPosition;
+		private float _groundedTimeout;
 
 	
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
@@ -135,13 +146,16 @@ namespace StarterAssets
 			_jumpTimeoutDelta = JumpTimeout;
 			_fallTimeoutDelta = FallTimeout;
 			_jumps_left = Jumps;
+			_cameraPosition = CinemachineCameraTarget.transform.position;
+			print(_cameraPosition);
 		}
 
 		private void Update()
 		{
-			JumpAndGravity();
+			Jump();
 			GroundedCheck();
 			Dodge();
+			Slide();
 			Move();
 		}
 
@@ -154,7 +168,15 @@ namespace StarterAssets
 		{
 			// set sphere position, with offset
 			Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z);
+			bool isGrounded = Grounded;
 			Grounded = Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers, QueryTriggerInteraction.Ignore);
+			//very first occurence of being grounded will have the previous check be not grounded
+			if (!isGrounded && Grounded){
+				_groundedTimeout = GroundedTime;
+			}
+			else{
+				_groundedTimeout -= Time.deltaTime;
+			}
 		}
 
 		private void CameraRotation()
@@ -182,8 +204,10 @@ namespace StarterAssets
 		private void Move()
 		{
 			// set target speed based on move speed, sprint speed and if sprint is pressed
+			
 			float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
-
+			
+			// print("target speed: " + targetSpeed);
 			// a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
 			// note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
@@ -197,6 +221,7 @@ namespace StarterAssets
 			float inputMagnitude = _input.analogMovement ? _input.move.magnitude : 1f;
 			float effectiveSpeedChangeRate = SpeedChangeRate;
 			//if grounded, accelerate or decelerate quicker
+			 // //if grounded for GroundedTime seconds, then change acceleration
 			if(Grounded){
 				effectiveSpeedChangeRate = SpeedChangeRate * GroundedSpeedModifier;
 			}
@@ -233,11 +258,44 @@ namespace StarterAssets
 				_previousDirection = inputDirection;
 			}
 
-			
-			
+			//Decrease horizontal velocity every update
+			if(_horizontalVelocity > 0.0f){
+				_horizontalVelocity -= DodgeSlowSpeed; 
+			}
+			if(_horizontalVelocity <= 0.0f){
+				_horizontalVelocity = 0.0f;
+			}
+			// if(_horizontalVelocity <= _speed){
+			// 	_horizontalVelocity = 0.0f; 
+			// }
+			// if(_horizontalVelocity <= 0.0f){
+			// 	_horizontalVelocity = 0.0f;
+			// }
+			//Decrease vertical velocity every update
+			// apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
+			if (_verticalVelocity < _terminalVelocity)
+			{
+				_verticalVelocity += Gravity * Time.deltaTime;
+			}
+			// stop our velocity dropping infinitely when grounded
+			if (Grounded && _verticalVelocity < 0f)
+			{
+				_verticalVelocity = -2f;
+			}
 			// move the player
 			// previous direction times speed in that direction, vertical direction caused by jumping, and horizontal direction caused by dodging
-			_controller.Move(_previousDirection.normalized * (_speed * Time.deltaTime) + 
+			Vector3 basicMovement = Vector3.zero;
+			if(!_input.slide){
+				basicMovement = _previousDirection.normalized * (_speed * Time.deltaTime);
+				_slideMovement = basicMovement;
+			}
+			else{
+				
+				basicMovement = _slideMovement * SlideModifier;//_slideDirection.normalized * (_speed * Time.deltaTime);
+				print("slid with speed: " + basicMovement.magnitude);
+			}
+			
+			_controller.Move(basicMovement + 
 							(new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime) + 
 							inputDirection.normalized * (_horizontalVelocity * Time.deltaTime));
 			// print(_controller.collisionFlags);
@@ -253,19 +311,13 @@ namespace StarterAssets
 			// }
 		}
 
-		private void JumpAndGravity()
+		private void Jump()
 		{
 			if (Grounded)
 			{
 				_jumps_left = Jumps;
 				// reset the fall timeout timer
 				_fallTimeoutDelta = FallTimeout;
-
-				// stop our velocity dropping infinitely when grounded
-				if (_verticalVelocity < 0f)
-				{
-					_verticalVelocity = -2f;
-				}
 
 				// Jump
 				if (_input.jump && _jumpTimeoutDelta <= 0.0f)
@@ -292,7 +344,6 @@ namespace StarterAssets
 					_jumpTimeoutDelta = JumpTimeout;
 					_input.jump = false;
 				}
-
 				// jump timeout
 				if (_jumpTimeoutDelta >= 0.0f)
 				{
@@ -326,12 +377,6 @@ namespace StarterAssets
 						_jumpTimeoutDelta -= Time.deltaTime;
 					}
 				}
-				// else{
-				// 	// reset the jump timeout timer
-				// 	_jumpTimeoutDelta = JumpTimeout;
-				// }
-				
-
 				// if we are not grounded, do not jump
 				_input.jump = false;
 			}
@@ -340,11 +385,7 @@ namespace StarterAssets
 			{
 				_fallTimeoutDelta -= Time.deltaTime;
 			}
-			// apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
-			if (_verticalVelocity < _terminalVelocity)
-			{
-				_verticalVelocity += Gravity * Time.deltaTime;
-			}
+
 		}
 		private void Dodge(){
 			if(_input.dodge){
@@ -357,20 +398,46 @@ namespace StarterAssets
 			if(_dodgeTimeoutDelta >= 0.0f){
 				_dodgeTimeoutDelta -= Time.deltaTime;
 			}
-			if(_horizontalVelocity >= 0.0f){
-				_horizontalVelocity /= DodgeSpeed; 
-			}
 			
+		}
+		private void Slide(){
+			if(_input.slide && _slideTime < -0.1f){
+				CinemachineCameraTarget.transform.localPosition = new Vector3(_cameraPosition.x, _cameraPosition.y - 0.5f, _cameraPosition.z);
+				if(_input.sprint && Grounded){
+					_slideTime = SlideDuration;
+				}
+			}
+			// else{
+			// 	gameObject.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+			// }
+			// if(_slideTime >= 0.0f){
+			_slideTime -= Time.deltaTime;
+			// }
+			if(_slideTime <= 0.0f){
+				//only want to do the following once after the slideTime has ended
+				if(_input.slide){
+					CinemachineCameraTarget.transform.localPosition = _cameraPosition;
+				}
+				_input.slide = false;
+			}
+			if(!Grounded){
+				if(_input.slide){
+					CinemachineCameraTarget.transform.localPosition = _cameraPosition;
+				}
+				_input.slide = false;
+			}
 		}
 		private void OnTriggerEnter(Collider collider){
 			// print("Collided: " + collider.name);
 			if((1 << collider.gameObject.layer & ResetLayers.value) != 0){
 				// print(gameObject.name);
 				_controller.enabled = false;
+				_horizontalVelocity = 0.0f;
+				_verticalVelocity = 0.0f;
+				_jumps_left = 0;
 				gameObject.transform.position = new Vector3(0.0f, 50.0f, 0.0f);
 				_controller.enabled = true;
 			}
-			// print(collider.gameObject.layer);
 		}
 		private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
 		{
