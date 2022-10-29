@@ -262,12 +262,18 @@ namespace StarterAssets
 			}
 			// print("_collisionModifiedVector:" + _collisionModifiedVector);
 			// print(Vector3.Distance(_lastCollisionPoint, transform.position));
-			if(Vector3.Distance(_lastCollisionPoint, transform.position) >1.5f)
+			if(Vector3.Distance(_lastCollisionPoint, transform.position) > 1.2f)
 				_collisionModifiedVector = Vector3.zero;
 			if(_collisionModifiedVector != Vector3.zero){
-				// print("inputDirection:" + inputDirection);
-				// print("_previousDirection:" + _previousDirection);
-				inputDirection = Vector3.Project(inputDirection, _collisionModifiedVector);
+
+				print("inputDirection: "+inputDirection + " _cMV: " + _collisionModifiedVector);
+				print("dot product: " + Vector3.Dot(inputDirection.normalized, _collisionModifiedVector.normalized));
+				float dot = Vector3.Dot(inputDirection.normalized, _collisionModifiedVector.normalized);
+				if(dot < 0.3f  && dot > -0.3f){
+					_collisionModifiedVector = Vector3.zero;
+				}
+				
+				inputDirection = Vector3.Project(inputDirection, _collisionModifiedVector); //new Vector3(inputDirection.x * _collisionModifiedVector.x, inputDirection.y * _collisionModifiedVector.y, inputDirection.z * _collisionModifiedVector.z);
 				_previousDirection = inputDirection;
 			}
 			
@@ -474,6 +480,20 @@ namespace StarterAssets
 
 			_collisionModifiedVector = (Vector3.Project(hit.moveDirection, newDirection1).normalized);//Vector3.Project(hit.moveDirection, newDirection1).normalized == hit.moveDirection.normalized ? newDirection1 : newDirection2;
 			
+			//
+			//
+			//
+			//
+			//
+			//
+			// Add a small force in the direction of the normal so the collision keeps happening
+			//
+			//
+			//
+			//
+			//
+			//
+
 			// print("new vectored direction: " + _collisionModifiedVector);
 			_lastCollisionPoint = hit.point;
 			// }
