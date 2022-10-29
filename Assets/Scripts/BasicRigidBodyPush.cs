@@ -4,11 +4,13 @@ public class BasicRigidBodyPush : MonoBehaviour
 {
 	public LayerMask pushLayers;
 	public bool canPush;
+	private CharacterController _controller;
 
 
 	[Range(0.5f, 5f)] public float strength = 1.1f;
 
 	private void Start(){
+		_controller = GetComponent<CharacterController>();
 	}
 
 	private void OnControllerColliderHit(ControllerColliderHit hit)
@@ -36,7 +38,9 @@ public class BasicRigidBodyPush : MonoBehaviour
 		// Calculate push direction from move direction, horizontal motion only
 		Vector3 pushDir = new Vector3(hit.moveDirection.x, 0.0f, hit.moveDirection.z);
 
+		float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
+
 		// Apply the push and take strength into account
-		body.AddForce(pushDir * strength, ForceMode.Impulse);
+		body.AddForce(pushDir * strength * currentHorizontalSpeed, ForceMode.Impulse);
 	}
 }

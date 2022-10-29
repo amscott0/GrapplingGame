@@ -100,6 +100,9 @@ namespace StarterAssets
 		private Vector3 _slideMovement;
 		private Vector3 _cameraPosition;
 		private float _groundedTimeout;
+		private Vector3 _collisionModifiedVector;
+		private bool _collided;
+		private Vector3 _lastCollisionPoint;
 
 	
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
@@ -206,7 +209,7 @@ namespace StarterAssets
 			// set target speed based on move speed, sprint speed and if sprint is pressed
 			
 			float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
-			
+			targetSpeed += _horizontalVelocity;
 			// print("target speed: " + targetSpeed);
 			// a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
@@ -250,27 +253,29 @@ namespace StarterAssets
 
 			// note: Vector2's != operator uses approximation so is not floating point error prone, and is cheaper than magnitude
 			// if there is a move input rotate player when the player is moving
-			
+
 			if (_input.move != Vector2.zero)
 			{
 				// move
 				inputDirection = transform.right * _input.move.x + transform.forward * _input.move.y;
 				_previousDirection = inputDirection;
 			}
-
-			//Decrease horizontal velocity every update
-			if(_horizontalVelocity > 0.0f){
-				_horizontalVelocity -= DodgeSlowSpeed; 
+			// print("_collisionModifiedVector:" + _collisionModifiedVector);
+			// print(Vector3.Distance(_lastCollisionPoint, transform.position));
+			if(Vector3.Distance(_lastCollisionPoint, transform.position) >1.5f)
+				_collisionModifiedVector = Vector3.zero;
+			if(_collisionModifiedVector != Vector3.zero){
+				// print("inputDirection:" + inputDirection);
+				// print("_previousDirection:" + _previousDirection);
+				inputDirection = Vector3.Project(inputDirection, _collisionModifiedVector);
+				_previousDirection = inputDirection;
 			}
-			if(_horizontalVelocity <= 0.0f){
-				_horizontalVelocity = 0.0f;
+			
+			if(_horizontalVelocity <= _speed){
+				// print("speed: " + _speed + " _horizontalV: " + _horizontalVelocity);
+				_horizontalVelocity = 0.0f; 
 			}
-			// if(_horizontalVelocity <= _speed){
-			// 	_horizontalVelocity = 0.0f; 
-			// }
-			// if(_horizontalVelocity <= 0.0f){
-			// 	_horizontalVelocity = 0.0f;
-			// }
+			
 			//Decrease vertical velocity every update
 			// apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
 			if (_verticalVelocity < _terminalVelocity)
@@ -287,7 +292,7 @@ namespace StarterAssets
 			Vector3 basicMovement = Vector3.zero;
 			if(!_input.slide){
 				basicMovement = _previousDirection.normalized * (_speed * Time.deltaTime);
-				_slideMovement = basicMovement;
+				_slideMovement = _previousDirection.normalized * (targetSpeed * inputMagnitude * Time.deltaTime);//basicMovement;
 			}
 			else{
 				
@@ -296,19 +301,8 @@ namespace StarterAssets
 			}
 			
 			_controller.Move(basicMovement + 
-							(new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime) + 
-							inputDirection.normalized * (_horizontalVelocity * Time.deltaTime));
-			// print(_controller.collisionFlags);
-			// if((_controller.collisionFlags & CollisionFlags.Sides) != 0){
-			// 	print("mega speed");
-			// 	_controller.Move(_previousDirection.normalized * (_speed * Time.deltaTime) + 
-			// 				(new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime) + 
-			// 				inputDirection.normalized * (_horizontalVelocity * Time.deltaTime));
-			// }else{
-			// 	_controller.Move(_previousDirection.normalized * (_speed * Time.deltaTime) + 
-			// 					(new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime) + 
-			// 					inputDirection.normalized * (_horizontalVelocity * Time.deltaTime));
-			// }
+							(new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime));// + 
+
 		}
 
 		private void Jump()
@@ -392,6 +386,7 @@ namespace StarterAssets
 				if(_dodgeTimeoutDelta <= 0.0f){
 					_horizontalVelocity = DodgeDistance;
 					_dodgeTimeoutDelta = DodgeTimeout;
+
 				}
 				_input.dodge = false;
 			}
@@ -438,6 +433,51 @@ namespace StarterAssets
 				gameObject.transform.position = new Vector3(0.0f, 50.0f, 0.0f);
 				_controller.enabled = true;
 			}
+		}
+
+		private void OnControllerColliderHit(ControllerColliderHit hit){
+			// if((_controller.collisionFlags & CollisionFlags.Sides) != 0){
+			// 	print("sides");
+			// 	_collisionModifiedVector = Vector3.zero;
+			// 	return;
+			// }
+			// print("length before: " + hit.moveLength);
+
+			if((hit.moveDirection.y < -0.3f) || hit.moveDirection == hit.normal){
+				return;
+			}
+			print("length after: " + hit.moveLength);
+			
+			// if(hit.moveLength < 0.01f){
+
+			// print("move direction: " + hit.moveDirection);
+			// print("normal: " + hit.normal);
+			Vector3 newDirection1 = Vector3.zero;
+			Vector3 newDirection2 = Vector3.zero;
+			if(hit.normal.x != 0.0f){
+				newDirection1.x = hit.normal.z;
+				newDirection1.z = -hit.normal.x;
+				// print("direction 1: " + newDirection1);
+				// newDirection1 = Vector3.Project(hit.moveDirection, newDirection1);
+				// print("newDirection 1: " + Vector3.Project(newDirection1, hit.moveDirection));
+			}
+			if(hit.normal.z != 0.0f){
+				newDirection2.z = hit.normal.x;
+				newDirection2.x = -hit.normal.z;
+				// print("direction 2: " + newDirection2);
+				// newDirection2 = Vector3.Project(hit.moveDirection, newDirection2);
+				// print("newDirection 2: " + Vector3.Project(newDirection2, hit.moveDirection));
+	
+			}
+			// print("check: " + (Vector3.Project(hit.moveDirection, newDirection1).normalized) + hit.moveDirection.normalized + (Vector3.Project(hit.moveDirection, newDirection1).normalized == hit.moveDirection.normalized));
+			// print("check: " + (Vector3.Project(hit.moveDirection, newDirection2).normalized) + hit.moveDirection.normalized + (Vector3.Project(hit.moveDirection, newDirection2).normalized == hit.moveDirection.normalized));
+
+			_collisionModifiedVector = (Vector3.Project(hit.moveDirection, newDirection1).normalized);//Vector3.Project(hit.moveDirection, newDirection1).normalized == hit.moveDirection.normalized ? newDirection1 : newDirection2;
+			
+			// print("new vectored direction: " + _collisionModifiedVector);
+			_lastCollisionPoint = hit.point;
+			// }
+			
 		}
 		private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
 		{
