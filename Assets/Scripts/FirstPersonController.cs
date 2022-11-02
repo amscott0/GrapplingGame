@@ -51,13 +51,15 @@ namespace StarterAssets
 
 		[Tooltip("Initial speed of the player's dodge")]
 		public float DodgeDistance = 50.0f;
+		[Tooltip("Wall jump horizontal speed")]
+		public float WallJumpHorizontalSpeed = 10.0f;
 		[Tooltip("Dodge slow down speed (higher values decrease speed quicker)")]
 		public float DodgeSlowSpeed = 2.0f;
 
 		[Tooltip("Duration of the player's slide")]
 		public float SlideDuration;
 		[Tooltip("Modifier for the player's slide")]
-		public float SlideModifier = 1.25f;
+		public float SlideModifier = 1.5f;
 
 		[Header("Player Grounded")]
 		[Tooltip("If the character is grounded or not. Not part of the CharacterController built in grounded check")]
@@ -86,7 +88,8 @@ namespace StarterAssets
 		private float _speed;
 		private float _rotationVelocity;
 		private float _verticalVelocity;
-		private float _horizontalVelocity;
+		private float _horizontalSpeed;
+		private Vector3 _horizontalDirection;
 		private float _terminalVelocity = 53.0f;
 		private int _jumps_left;
 
@@ -100,13 +103,13 @@ namespace StarterAssets
 		private Vector3 _slideMovement; //velocity of slide
 		private Vector3 _cameraPosition;
 		// private float _groundedTimeout;
-		private Vector3 _collisionModifiedVector;
-		private bool _collided;
-		private Vector3 _lastCollisionPoint = Vector3.zero;
+		private Vector3 _collisionModifiedVector; //new direction to go when colliding with a wall - makes collisions with walls smoother
+		private Vector3 _lastCollisionPoint = Vector3.zero; //last collision point with a wall or other non floor object, used to know when the wall is too far away to wall run on
 
-		private bool _wallRunPossible = false;
-		private Vector3 _wallRunDirection = Vector3.zero;
-		private bool _wallRunning = false;
+		private bool _wallRunPossible = false; //is a wall run currently possible
+		private Vector3 _wallRunDirection = Vector3.zero; //current wall run movement vector, passed into _controller.Move() function
+		private bool _wallRunning = false; //currently wall running vector
+		private Vector3 _previousWallNormal = Vector3.zero; //previous normal vector that was wall run on
 
 	
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
@@ -213,7 +216,7 @@ namespace StarterAssets
 			// set target speed based on move speed, sprint speed and if sprint is pressed
 			
 			float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
-			// targetSpeed += _horizontalVelocity;
+
 			// print("target speed: " + targetSpeed);
 			// a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
@@ -221,10 +224,33 @@ namespace StarterAssets
 			// if there is no input, set the target speed to 0
 			if (_input.move == Vector2.zero) targetSpeed = 0.0f;
 
+			
+			//
+			//
+			//
+			//
+			// Next up, make the player able to move in different directions after dodging
+			// eg. when the player dodges, they can't really change their left or right direction
+			// eg2. when the player Wall Jumps or dodges, they don't carry any speed from the jump
+			// look at the currentHorizontalSpeed line calculation below, consider not subtracting as much _horizontalSpeed
+			//
+			//
+			// Next, look at the _horizontalDirection additions
+			// maybe add onto the _horizontalDirection with _previousDirection * (_horizontalSpeed/DodgeDistance) 
+			// to make the direction of the horizontal distance change more or less depending on how much it contributes to the speed
+			//
+			// Figure out how to fix the dodge from just going in the previous direction
+			
+			/////////////////////////////////////////////////////////////////////////////////////////////////
+			// Lastly, CONSIDER
+			// making an array of a struct composed of (vector + velocity + slow down ) to iterate over before calling _controller.Move()
+			// This could allow any function to add a velocity to the array, with it's slow down time included.
+			//////////////////////////////////////////////////////////////////////////////////////////////////
+
 			// a reference to the players current horizontal velocity
-			float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
+			float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude - _horizontalSpeed;
 			// print("currentHorizontalSpeed = " + currentHorizontalSpeed);
-			float speedOffset = 0.1f;
+			float speedOffset = 0.125f;
 			float inputMagnitude = _input.analogMovement ? _input.move.magnitude : 1f;
 			float effectiveSpeedChangeRate = SpeedChangeRate;
 			//if grounded, accelerate or decelerate quicker
@@ -314,9 +340,13 @@ namespace StarterAssets
 				_previousDirection = inputDirection;
 			}
 
-			if(_horizontalVelocity >= 0.0f){
-				// print("speed: " + _speed + " _horizontalV: " + _horizontalVelocity);
-				_horizontalVelocity /= DodgeSlowSpeed; 
+			if(_horizontalSpeed >= 0.02f){
+				// print("speed: " + _speed + " _horizontalV: " + _horizontalSpeed);
+				_horizontalSpeed -= DodgeSlowSpeed * Time.deltaTime; 
+			}
+			else{
+				_horizontalSpeed = 0.0f;
+				_horizontalDirection = Vector3.zero;
 			}
 			
 			//Decrease vertical velocity every update
@@ -353,16 +383,17 @@ namespace StarterAssets
 				basicMovement = _slideMovement * SlideModifier;//_slideDirection.normalized * (_speed * Time.deltaTime);
 				// print("slid with speed: " + basicMovement.magnitude);
 			}
-			print("basicMovement: " + basicMovement + " _wallRunDirection: " + _wallRunDirection + " targetSpeed: " + targetSpeed + " _speed: " + _speed);
+			// print("basicMovement: " + basicMovement + " _wallRunDirection: " + _wallRunDirection + " targetSpeed: " + targetSpeed + " _speed: " + _speed);
+			print("_horizontalSpeed: " + _horizontalSpeed + " _horizontalDirection: " + _horizontalDirection);
 			_controller.Move(basicMovement + 
 							(new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime)+
-							(inputDirection.normalized * (_horizontalVelocity * Time.deltaTime)));
+							(_horizontalDirection.normalized * (_horizontalSpeed * Time.deltaTime)));
 
 		}
 
 		private void Jump()
 		{
-			if (Grounded || _wallRunPossible)
+			if (Grounded || _wallRunning)
 			{
 				
 				_jumps_left = Jumps;
@@ -377,6 +408,11 @@ namespace StarterAssets
 					_jumpTimeoutDelta = JumpTimeout;
 					_input.jump = false;
 					_wallRunPossible = false;
+					if(_wallRunning){
+						_horizontalSpeed += WallJumpHorizontalSpeed;
+						_horizontalDirection += _previousWallNormal;
+					}
+					_wallRunning = false;
 				}
 
 				// jump timeout
@@ -437,9 +473,9 @@ namespace StarterAssets
 		private void Dodge(){
 			if(_input.dodge){
 				if(_dodgeTimeoutDelta <= 0.0f){
-					_horizontalVelocity = DodgeDistance;
+					_horizontalSpeed += DodgeDistance;
+					_horizontalDirection += _previousDirection;
 					_dodgeTimeoutDelta = DodgeTimeout;
-
 				}
 				_input.dodge = false;
 			}
@@ -484,7 +520,7 @@ namespace StarterAssets
 			if((1 << collider.gameObject.layer & ResetLayers.value) != 0){
 				// print(gameObject.name);
 				_controller.enabled = false;
-				_horizontalVelocity = 0.0f;
+				_horizontalSpeed = 0.0f;
 				_verticalVelocity = 0.0f;
 				_jumps_left = 0;
 				gameObject.transform.position = new Vector3(0.0f, 50.0f, 0.0f);
@@ -515,6 +551,7 @@ namespace StarterAssets
 			_collisionModifiedVector = (Vector3.Project(hit.moveDirection, newDirection1).normalized);
 
 			_lastCollisionPoint = hit.point;
+			_previousWallNormal = hit.normal;
 
 		}
 		private static float ClampAngle(float lfAngle, float lfMin, float lfMax)

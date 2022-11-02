@@ -26,6 +26,8 @@ namespace StarterAssets
 		public void OnMove(InputValue value)
 		{
 			MoveInput(value.Get<Vector2>());
+			//consider making a concrete class here and in the other functions that implements a command interface and execute calls MoveInput
+			//eg. ConcreteMoveCommand.execute() returns Vector2 newMoveDirection 
 		}
 
 		public void OnLook(InputValue value)
@@ -57,6 +59,7 @@ namespace StarterAssets
 		public void MoveInput(Vector2 newMoveDirection)
 		{
 			move = newMoveDirection;
+
 		} 
 
 		public void LookInput(Vector2 newLookDirection)
