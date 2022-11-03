@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 using UnityEngine.InputSystem;
 #endif
@@ -52,7 +53,10 @@ namespace StarterAssets
 		[Tooltip("Initial speed of the player's dodge")]
 		public float DodgeDistance = 50.0f;
 		[Tooltip("Wall jump horizontal speed")]
-		public float WallJumpHorizontalSpeed = 10.0f;
+		public float WallJumpHorizontalSpeed = 25.0f;
+		[Tooltip("Time player has to wait between wall jumps, prevents some bugs")]
+		public float WallJumpTimeout = 0.1f;
+
 		[Tooltip("Dodge slow down speed (higher values decrease speed quicker)")]
 		public float DodgeSlowSpeed = 2.0f;
 
@@ -86,12 +90,12 @@ namespace StarterAssets
 
 		// player
 		private float _speed;
-		private float _rotationVelocity;
-		private float _verticalVelocity;
-		private float _horizontalSpeed;
-		private Vector3 _horizontalDirection;
+		private float _rotationVelocity; // how quick to rotate camera
+		private float _verticalVelocity; //Speed used to add jump velocity
+		private float _horizontalSpeed; // speed to send the player in with vector _horizontalDirection
+		private Vector3 _horizontalDirection; // current direction that the player is moving in with _horizontalSpeed speed
 		private float _terminalVelocity = 53.0f;
-		private int _jumps_left;
+		private int _jumpsLeft; // number of jumps left
 
 		// timeout deltatime
 		private float _jumpTimeoutDelta; //jump timeout
@@ -110,6 +114,13 @@ namespace StarterAssets
 		private Vector3 _wallRunDirection = Vector3.zero; //current wall run movement vector, passed into _controller.Move() function
 		private bool _wallRunning = false; //currently wall running vector
 		private Vector3 _previousWallNormal = Vector3.zero; //previous normal vector that was wall run on
+
+		private float _wallJumpSpeed = 0.0f; //Small speed to get player away from wall after jumping.
+
+		private float _wallJumpTimeoutDelta;
+
+		private Vector3 _inputDirection;
+		
 
 	
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
@@ -155,13 +166,15 @@ namespace StarterAssets
 			// reset our timeouts on start
 			_jumpTimeoutDelta = JumpTimeout;
 			_fallTimeoutDelta = FallTimeout;
-			_jumps_left = Jumps;
+			_wallJumpTimeoutDelta = WallJumpTimeout;
+			_jumpsLeft = Jumps;
 			_cameraPosition = CinemachineCameraTarget.transform.position;
 			print(_cameraPosition);
 		}
 
 		private void Update()
 		{
+			WallRunAndSlide();
 			Jump();
 			GroundedCheck();
 			Dodge();
@@ -211,150 +224,263 @@ namespace StarterAssets
 			}
 		}
 
+		// private void Move()
+		// {
+		// 	// set target speed based on move speed, sprint speed and if sprint is pressed
+			
+		// 	float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
+
+		// 	// print("target speed: " + targetSpeed);
+		// 	// a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
+
+		// 	// note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
+		// 	// if there is no input, set the target speed to 0
+		// 	if (_input.move == Vector2.zero) targetSpeed = 0.0f;
+
+			
+		// 	//
+		// 	//
+		// 	//
+		// 	//
+		// 	// Next up, make the player able to move in different directions after dodging
+		// 	// eg. when the player dodges, they can't really change their left or right direction
+		// 	// eg2. when the player Wall Jumps or dodges, they don't carry any speed from the jump
+		// 	// look at the currentHorizontalSpeed line calculation below, consider not subtracting as much _horizontalSpeed
+		// 	//
+		// 	//
+		// 	// Next, look at the _horizontalDirection additions
+		// 	// maybe add onto the _horizontalDirection with _previousDirection * (_horizontalSpeed/DodgeDistance) 
+		// 	// to make the direction of the horizontal distance change more or less depending on how much it contributes to the speed
+		// 	//
+		// 	// Figure out how to fix the dodge from just going in the previous direction
+			
+		// 	/////////////////////////////////////////////////////////////////////////////////////////////////
+		// 	// Lastly, CONSIDER
+		// 	// making an array of a struct composed of (vector + velocity + slow down ) to iterate over before calling _controller.Move()
+		// 	// This could allow any function to add a velocity to the array, with it's slow down time included.
+		// 	//////////////////////////////////////////////////////////////////////////////////////////////////
+
+		// 	// a reference to the players current horizontal velocity
+		// 	// float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
+		// 	// print("currentHorizontalSpeed: " + currentHorizontalSpeed);
+		// 	// print("currentHorizontalSpeed = " + currentHorizontalSpeed);
+			
+		// 	// float inputMagnitude = _input.analogMovement ? _input.move.magnitude : 1f;
+		// 	// float effectiveSpeedChangeRate = SpeedChangeRate;
+		// 	// float speedOffset = 0.125f;
+		// 	//if grounded, accelerate or decelerate quicker
+		// 	 // //if grounded for GroundedTime seconds, then change acceleration
+		// 	// if(Grounded){
+		// 	// 	effectiveSpeedChangeRate = SpeedChangeRate * GroundedSpeedModifier;
+		// 	// }
+		// 	// //if not grounded, accelerate or decelerate slower
+		// 	// else{
+		// 	// 	effectiveSpeedChangeRate = SpeedChangeRate * AirSpeedModifier;
+		// 	// }
+		// 	// // accelerate or decelerate to target speed
+		// 	// if (currentHorizontalSpeed < targetSpeed - speedOffset){
+		// 	// 	// creates curved result rather than a linear one giving a more organic speed change
+		// 	// 	// note T in Lerp is clamped, so we don't need to clamp our speed
+		// 	// 	_speed = Mathf.Lerp(currentHorizontalSpeed, targetSpeed * inputMagnitude, Time.deltaTime * (SpeedChangeRate));
+		// 	// 	// round speed to 3 decimal places
+		// 	// 	_speed = Mathf.Round(_speed * 1000f) / 1000f;
+		// 	// }
+		// 	// else if(currentHorizontalSpeed > targetSpeed + speedOffset)
+		// 	// {
+		// 	// 	// creates curved result rather than a linear one giving a more organic speed change
+		// 	// 	// note T in Lerp is clamped, so we don't need to clamp our speed
+		// 	// 	_speed = Mathf.Lerp(currentHorizontalSpeed, targetSpeed * inputMagnitude, Time.deltaTime * (effectiveSpeedChangeRate * currentHorizontalSpeed));
+
+		// 	// 	// round speed to 3 decimal places
+		// 	// 	_speed = Mathf.Round(_speed * 1000f) / 1000f;
+				
+		// 	// }
+		// 	// else
+		// 	// {
+		// 		_speed = targetSpeed;
+		// 	// }
+			
+		// 	// normalise input direction
+		// 	Vector3 inputDirection = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
+
+		// 	// note: Vector2's != operator uses approximation so is not floating point error prone, and is cheaper than magnitude
+		// 	// if there is a move input rotate player when the player is moving
+		// 	if (_input.move != Vector2.zero)
+		// 	{
+		// 		// move
+		// 		inputDirection = transform.right * _input.move.x + transform.forward * _input.move.y;
+		// 		_previousDirection = inputDirection;
+		// 	}
+		// 	_lastCollisionPoint = new Vector3(_lastCollisionPoint.x, transform.position.y, _lastCollisionPoint.z);
+			
+		// 	// print("last point: " + _lastCollisionPoint + " player point: " + transform.position +  " distance: " + Vector3.Distance(_lastCollisionPoint, transform.position));
+		// 	if(Vector3.Distance(_lastCollisionPoint, transform.position) > .7f)
+		// 		_collisionModifiedVector = Vector3.zero;
+
+		// 	// print("inputDirection: "+inputDirection.normalized + " _previousDirection: " +_previousDirection.normalized);
+		// 	// print("_wallRunDirection: "+_wallRunDirection.normalized);
+		// 	//exit wall run if ever there is no more wall
+		// 	if(!_wallRunPossible ||  _collisionModifiedVector == Vector3.zero){ // _verticalVelocity > 0.0f ||
+		// 		_wallJumpTimeoutDelta -= Time.deltaTime;
+		// 		_wallRunPossible = false;
+		// 		_wallRunning = false;
+		// 	}
+		// 	//start wall run
+		// 	else if(!Grounded && _wallRunPossible && !_wallRunning && _wallJumpTimeoutDelta <= 0.0f){ 
+		// 		_wallJumpTimeoutDelta = WallJumpTimeout;
+		// 		_wallRunning = true;
+		// 		_horizontalSpeed += 5.0f;
+		// 		_verticalVelocity = 0.0f;
+		// 	}
+		// 	if(_collisionModifiedVector != Vector3.zero){
+		// 		// print("inputDirection: "+inputDirection.normalized + " _cMV: " + _collisionModifiedVector.normalized);
+		// 		// print("dot product: " + Vector3.Dot(inputDirection.normalized, _collisionModifiedVector.normalized));
+		// 		// if(_wallRunDirection != Vector3.zero){
+		// 		// 	inputDirection = _wallRunDirection;
+		// 		// }
+		// 		// else{
+		// 		float dot = Vector3.Dot(inputDirection.normalized, _collisionModifiedVector.normalized);
+		// 		if(dot < 0.4f  || dot > 1.5f){
+		// 			_collisionModifiedVector = Vector3.zero;
+		// 		}
+				
+		// 		inputDirection = Vector3.Project(inputDirection, _collisionModifiedVector);
+		// 		// }
+		// 	}
+
+			
+
+
+		// 	//set the previous known move to the previous direction
+		// 	// if (_input.move != Vector2.zero)
+		// 	// {
+		// 	_previousDirection = inputDirection;
+		// 	// }
+
+		// 	if(_horizontalSpeed >= 0.02f){
+		// 		// print("speed: " + _speed + " _horizontalV: " + _horizontalSpeed);
+		// 		_horizontalSpeed -= (_horizontalSpeed/2.0f) * Time.deltaTime; 
+		// 	}
+		// 	if((_horizontalSpeed <= (_input.sprint ? SprintSpeed : MoveSpeed)) && targetSpeed == 0.0f){
+		// 		_horizontalSpeed -= (2.0f) * Time.deltaTime;
+		// 	}
+		// 	if(_horizontalSpeed == 0.0f){
+		// 		_horizontalSpeed = 0.0f;
+		// 		_horizontalDirection = Vector3.zero;
+		// 	}
+			
+		// 	//Decrease vertical velocity every update
+		// 	// apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
+		// 	if (_verticalVelocity < _terminalVelocity)
+		// 	{
+		// 		if(_wallRunning){
+		// 			_verticalVelocity = 0.0f;//Gravity * (0.25f) * Time.deltaTime;
+		// 		}
+		// 		else{
+		// 			_verticalVelocity += Gravity * Time.deltaTime;
+		// 		}
+		// 	}
+		// 	// stop our velocity dropping infinitely when grounded
+		// 	if (Grounded && _verticalVelocity < 0f)
+		// 	{
+		// 		_verticalVelocity = -2f;
+		// 	}
+
+		// 	// move the player
+		// 	// previous direction times speed in that direction, vertical direction caused by jumping, and horizontal direction caused by dodging
+		// 	// Vector3 basicMovement = Vector3.zero;
+		// 	// if(!_input.slide){
+		// 		// basicMovement = _previousDirection.normalized * (_speed * Time.deltaTime);
+		// 	// 	_slideMovement = _previousDirection.normalized * (_speed * Time.deltaTime);//basicMovement;
+		// 	// }
+		// 	// if(!_wallRunning){
+		// 	// 	_wallRunDirection = (_previousDirection.normalized * (_speed * Time.deltaTime)) * 1.25f;
+		// 	// }
+		// 	// else{
+		// 	// 	basicMovement = _previousDirection.normalized * (targetSpeed * inputMagnitude * Time.deltaTime) + _wallRunDirection;
+		// 	// }
+		// 	// if(_input.slide){
+		// 		// _horizontalSpeed += SlideModifier;
+		// 		// basicMovement = _slideMovement * SlideModifier;//_slideDirection.normalized * (_speed * Time.deltaTime);
+		// 		// print("slid with speed: " + basicMovement.magnitude);
+		// 	// }
+		// 	// print("basicMovement: " + basicMovement + " _wallRunDirection: " + _wallRunDirection + " targetSpeed: " + targetSpeed + " _speed: " + _speed);
+		// 	// print("_horizontalSpeed: " + _horizontalSpeed + " _horizontalDirection: " + _horizontalDirection);
+		// 	// print("inputDirection: " + inputDirection);
+		// 	// print("change: " + 	Vector3.RotateTowards(_horizontalDirection, inputDirection.normalized, inputDirection.magnitude*Time.deltaTime, 0.0f));
+		// 	if(!_wallRunning){
+		// 		_wallRunDirection = inputDirection.normalized;
+		// 		if(_wallJumpSpeed > 0.0f)
+		// 			_wallJumpSpeed -= 15f * Time.deltaTime;
+		// 		else
+		// 			_wallJumpSpeed = 0.0f;
+		// 	}
+		// 	else{
+        //         _horizontalDirection = _wallRunDirection;
+		// 	}
+		// 	if(Vector3.Dot(_horizontalDirection, inputDirection.normalized) <= 0.0f){
+		// 		_horizontalSpeed -= targetSpeed * Time.deltaTime;
+		// 	}
+		// 	_horizontalDirection = Vector3.RotateTowards(_horizontalDirection, inputDirection.normalized, inputDirection.magnitude*Time.deltaTime, 0.0f);
+		// 	if(_horizontalSpeed <= targetSpeed){
+		// 		_horizontalSpeed = targetSpeed;
+		// 		_horizontalDirection = inputDirection;
+		// 	}
+		// 	// print("_horizontalSpeed: " + _horizontalSpeed + " _horizontalDirection: " + _horizontalDirection);
+		// 	// print("_verticalVelocity: " + _verticalVelocity);
+		// 	_controller.Move(// basicMovement + 
+		// 					(new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime) +
+		// 					(_horizontalDirection.normalized * (_horizontalSpeed * Time.deltaTime)) +
+		// 					(_previousWallNormal * (_wallJumpSpeed * Time.deltaTime)));
+
+		// }
 		private void Move()
 		{
 			// set target speed based on move speed, sprint speed and if sprint is pressed
-			
 			float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
-
-			// print("target speed: " + targetSpeed);
-			// a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
-
-			// note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
-			// if there is no input, set the target speed to 0
+			//if there is no movement, set target speed to false
 			if (_input.move == Vector2.zero) targetSpeed = 0.0f;
 
-			
 			//
 			//
+			// Figure out why _wallJumpSpeed is causing a horizontal jump like effect where it causes a bouncing effect on the wall
+			// It starts positive and ends up negative maybe?
 			//
+			// Also, consider bringing back the _speed = Lerp calculation when _horizontalSpeed is really small, so that it is easier to precisely move on ledges without going 0.0f or 6.0f (sprint speed)
 			//
-			// Next up, make the player able to move in different directions after dodging
-			// eg. when the player dodges, they can't really change their left or right direction
-			// eg2. when the player Wall Jumps or dodges, they don't carry any speed from the jump
-			// look at the currentHorizontalSpeed line calculation below, consider not subtracting as much _horizontalSpeed
-			//
-			//
-			// Next, look at the _horizontalDirection additions
-			// maybe add onto the _horizontalDirection with _previousDirection * (_horizontalSpeed/DodgeDistance) 
-			// to make the direction of the horizontal distance change more or less depending on how much it contributes to the speed
-			//
-			// Figure out how to fix the dodge from just going in the previous direction
-			
+
 			/////////////////////////////////////////////////////////////////////////////////////////////////
 			// Lastly, CONSIDER
 			// making an array of a struct composed of (vector + velocity + slow down ) to iterate over before calling _controller.Move()
 			// This could allow any function to add a velocity to the array, with it's slow down time included.
 			//////////////////////////////////////////////////////////////////////////////////////////////////
 
-			// a reference to the players current horizontal velocity
-			float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude - _horizontalSpeed;
-			// print("currentHorizontalSpeed = " + currentHorizontalSpeed);
-			float speedOffset = 0.125f;
-			float inputMagnitude = _input.analogMovement ? _input.move.magnitude : 1f;
-			float effectiveSpeedChangeRate = SpeedChangeRate;
-			//if grounded, accelerate or decelerate quicker
-			 // //if grounded for GroundedTime seconds, then change acceleration
-			if(Grounded){
-				effectiveSpeedChangeRate = SpeedChangeRate * GroundedSpeedModifier;
-			}
-			//if not grounded, accelerate or decelerate slower
-			else{
-				effectiveSpeedChangeRate = SpeedChangeRate * AirSpeedModifier;
-			}
-			// accelerate or decelerate to target speed
-			if (currentHorizontalSpeed < targetSpeed - speedOffset){
-				// creates curved result rather than a linear one giving a more organic speed change
-				// note T in Lerp is clamped, so we don't need to clamp our speed
-				_speed = Mathf.Lerp(currentHorizontalSpeed, targetSpeed * inputMagnitude, Time.deltaTime * (SpeedChangeRate));
-				// round speed to 3 decimal places
-				_speed = Mathf.Round(_speed * 1000f) / 1000f;
-			}
-			else if(currentHorizontalSpeed > targetSpeed + speedOffset)
-			{
-				// creates curved result rather than a linear one giving a more organic speed change
-				// note T in Lerp is clamped, so we don't need to clamp our speed
-				_speed = Mathf.Lerp(currentHorizontalSpeed, targetSpeed * inputMagnitude, Time.deltaTime * (effectiveSpeedChangeRate * currentHorizontalSpeed));
-
-				// round speed to 3 decimal places
-				_speed = Mathf.Round(_speed * 1000f) / 1000f;
-				
-			}
-			else
-			{
-				_speed = targetSpeed;
-			}
+			//set _speed to targetSpeed without modification
+			_speed = targetSpeed;
 			
-			// normalise input direction
-			Vector3 inputDirection = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
-
-			// note: Vector2's != operator uses approximation so is not floating point error prone, and is cheaper than magnitude
-			// if there is a move input rotate player when the player is moving
-			if (_input.move != Vector2.zero)
-			{
-				// move
-				inputDirection = transform.right * _input.move.x + transform.forward * _input.move.y;
-				_previousDirection = inputDirection;
-			}
-			_lastCollisionPoint = new Vector3(_lastCollisionPoint.x, transform.position.y, _lastCollisionPoint.z);
-			
-			// print("last point: " + _lastCollisionPoint + " player point: " + transform.position +  " distance: " + Vector3.Distance(_lastCollisionPoint, transform.position));
-			if(Vector3.Distance(_lastCollisionPoint, transform.position) > .7f)
-				_collisionModifiedVector = Vector3.zero;
-
-			// print("inputDirection: "+inputDirection.normalized + " _previousDirection: " +_previousDirection.normalized);
-			// print("_wallRunDirection: "+_wallRunDirection.normalized);
-			//exit wall run if ever there is no more wall
-			if(!_wallRunPossible ||  _collisionModifiedVector == Vector3.zero){ // _verticalVelocity > 0.0f ||
-				_wallRunPossible = false;
-				// _wallRunDirection = Vector3.zero;
-				_wallRunning = false;
-			}
-			//start wall run
-			else if(!Grounded && _wallRunPossible){ //&& _wallRunDirection == Vector3.zero){
-				_wallRunning = true;
-				_verticalVelocity = 0.0f;
-			}
-			if(_collisionModifiedVector != Vector3.zero){
-				// print("inputDirection: "+inputDirection.normalized + " _cMV: " + _collisionModifiedVector.normalized);
-				// print("dot product: " + Vector3.Dot(inputDirection.normalized, _collisionModifiedVector.normalized));
-				// if(_wallRunDirection != Vector3.zero){
-				// 	inputDirection = _wallRunDirection;
-				// }
-				// else{
-				float dot = Vector3.Dot(inputDirection.normalized, _collisionModifiedVector.normalized);
-				if(dot < 0.4f  || dot > 1.0f){
-					_collisionModifiedVector = Vector3.zero;
-				}
-				
-				inputDirection = Vector3.Project(inputDirection, _collisionModifiedVector);
-				// }
-			}
-
-			
-
-
-			//set the previous known move to the previous direction
-			if (_input.move != Vector2.zero)
-			{
-				_previousDirection = inputDirection;
-			}
-
+			//if the _horizontalSpeed is positive, decelerate. _horizontalSpeed decreases faster the larger it is.
 			if(_horizontalSpeed >= 0.02f){
 				// print("speed: " + _speed + " _horizontalV: " + _horizontalSpeed);
-				_horizontalSpeed -= DodgeSlowSpeed * Time.deltaTime; 
+				_horizontalSpeed -= (_horizontalSpeed/2.0f) * Time.deltaTime; 
 			}
-			else{
+			if((_horizontalSpeed <= (_input.sprint ? SprintSpeed : MoveSpeed)) && targetSpeed == 0.0f){ // if _horizontalSpeed speed is sufficiently small, decelerate faster
+				_horizontalSpeed -= (5.0f) * Time.deltaTime;
+			}
+			if(_horizontalSpeed == 0.0f){ // if _horizontalSpeed is zero, set _horizontalDirection to Vector3.zero
 				_horizontalSpeed = 0.0f;
 				_horizontalDirection = Vector3.zero;
 			}
-			
+			//immediately speed up to the target speed if below it
+			if(_horizontalSpeed <= targetSpeed){
+				_horizontalSpeed = targetSpeed;
+				_horizontalDirection = _inputDirection;
+			}
 			//Decrease vertical velocity every update
 			// apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
 			if (_verticalVelocity < _terminalVelocity)
 			{
 				if(_wallRunning){
-					_verticalVelocity += Gravity * (0.25f) * Time.deltaTime;
+					_verticalVelocity = 0.0f; // no gravity when wall running
 				}
 				else{
 					_verticalVelocity += Gravity * Time.deltaTime;
@@ -365,38 +491,80 @@ namespace StarterAssets
 			{
 				_verticalVelocity = -2f;
 			}
-
-			// move the player
-			// previous direction times speed in that direction, vertical direction caused by jumping, and horizontal direction caused by dodging
-			Vector3 basicMovement = Vector3.zero;
-			if(!_input.slide){
-				basicMovement = _previousDirection.normalized * (_speed * Time.deltaTime);
-				_slideMovement = _previousDirection.normalized * (_speed * Time.deltaTime);//basicMovement;
+			//find how related our desired direction (_inputDirection) is to our currently moved in direction (_horizontalDirection)
+			//if it is in opposite directions, decrease our speed
+			if(Vector3.Dot(_horizontalDirection, _inputDirection.normalized) <= 0.0f){
+				_horizontalSpeed -= targetSpeed * Time.deltaTime;
 			}
+			//rotate our moving direction towards our desired direction
+			_horizontalDirection = Vector3.RotateTowards(_horizontalDirection, _inputDirection.normalized, Mathf.Abs(1f/Vector3.Dot(_horizontalDirection, _inputDirection.normalized))*_inputDirection.magnitude*Time.deltaTime, 0.0f);
+			// print("_horizontalSpeed: " + _horizontalSpeed + " _horizontalDirection: " + _horizontalDirection);
+			// print("_verticalVelocity: " + _verticalVelocity);
+			_controller.Move((new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime) +
+							(_horizontalDirection.normalized * (_horizontalSpeed * Time.deltaTime)) +
+							(_previousWallNormal * (_wallJumpSpeed * Time.deltaTime)));
+		}
+		private void WallRunAndSlide(){
+
+			// normalize input direction
+			_inputDirection = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
+
+			// note: Vector2's != operator uses approximation so is not floating point error prone, and is cheaper than magnitude
+			// if there is a move input rotate player when the player is moving
+			if (_input.move != Vector2.zero)
+			{
+				// move
+				_inputDirection = transform.right * _input.move.x + transform.forward * _input.move.y;
+			}
+			
+			//note: take just the x and y position of the last collision point (set in OnControllerColliderHit()) because the y position varies every hit
+			if(Vector3.Distance(new Vector3(_lastCollisionPoint.x, transform.position.y, _lastCollisionPoint.z), transform.position) > .7f) // note: this 0.7f value is very much a hardcoded estimate value of when we are considered too far from a wall to continue wall runing on it
+				_collisionModifiedVector = Vector3.zero;
+
+			//exit wall run if the _collisionModifiedVector was set to zero before because we got too far from the wall
+			if(!_wallRunPossible ||  _collisionModifiedVector == Vector3.zero){
+				_wallJumpTimeoutDelta -= Time.deltaTime; //start decreasing the wall jump timeout
+				_wallRunPossible = false;
+				_wallRunning = false;
+			}
+			//start wall run
+			else if(!Grounded && _wallRunPossible && !_wallRunning && _wallJumpTimeoutDelta <= 0.0f){ 
+				_wallJumpTimeoutDelta = WallJumpTimeout; //reset the wall jump timeout
+				_wallRunning = true;
+				_horizontalSpeed += 5.0f;
+				_verticalVelocity = 0.0f;
+			}
+			//this code is for finding the new vector after colliding with a wall.
+			//This is very important, because it gives the player the feeling of slippery walls that do not decrease speed
+			if(_collisionModifiedVector != Vector3.zero){
+				float dot = Vector3.Dot(_inputDirection.normalized, _collisionModifiedVector.normalized);
+				if(dot < 0.4f  || dot > 1.5f){
+					_collisionModifiedVector = Vector3.zero;
+				}
+				
+				_inputDirection = Vector3.Project(_inputDirection, _collisionModifiedVector);
+			}
+			
+			//if we are not currently wall running, remember the last good _inputDirection in _wallRunDirection, so we can set _horizontalDirection to this value when we are wall running
 			if(!_wallRunning){
-				_wallRunDirection = (_previousDirection.normalized * (_speed * Time.deltaTime)) * 1.25f;
+				_wallRunDirection = _inputDirection.normalized;
+				print("_wallJumpSpeed: " + _wallJumpSpeed);
+				if(_wallJumpSpeed >= 0.0f) // _wallJumpSpeed is just a speed that takes us away from walls with a burst and then goes away,, it is decreased here
+					_wallJumpSpeed -= 10f * Time.deltaTime;
+				else
+					_wallJumpSpeed = 0.0f;
 			}
 			else{
-				basicMovement = _previousDirection.normalized * (targetSpeed * inputMagnitude * Time.deltaTime) + _wallRunDirection;
+                _horizontalDirection = _wallRunDirection;
 			}
-			if(_input.slide){
-				basicMovement = _slideMovement * SlideModifier;//_slideDirection.normalized * (_speed * Time.deltaTime);
-				// print("slid with speed: " + basicMovement.magnitude);
-			}
-			// print("basicMovement: " + basicMovement + " _wallRunDirection: " + _wallRunDirection + " targetSpeed: " + targetSpeed + " _speed: " + _speed);
-			print("_horizontalSpeed: " + _horizontalSpeed + " _horizontalDirection: " + _horizontalDirection);
-			_controller.Move(basicMovement + 
-							(new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime)+
-							(_horizontalDirection.normalized * (_horizontalSpeed * Time.deltaTime)));
 
 		}
-
 		private void Jump()
 		{
 			if (Grounded || _wallRunning)
 			{
 				
-				_jumps_left = Jumps;
+				_jumpsLeft = Jumps;
 				// reset the fall timeout timer
 				_fallTimeoutDelta = FallTimeout;
 
@@ -409,8 +577,11 @@ namespace StarterAssets
 					_input.jump = false;
 					_wallRunPossible = false;
 					if(_wallRunning){
-						_horizontalSpeed += WallJumpHorizontalSpeed;
-						_horizontalDirection += _previousWallNormal;
+						// _horizontalSpeed += WallJumpHorizontalSpeed;
+						// _horizontalDirection = (_previousWallNormal + _wallRunDirection.normalized* 0.50f);
+						// _wallJumpVector = _previousWallNormal + _wallRunDirection.normalized;
+						_wallJumpSpeed = WallJumpHorizontalSpeed;
+						print("wall jumped");
 					}
 					_wallRunning = false;
 				}
@@ -439,7 +610,7 @@ namespace StarterAssets
 			}
 			else
 			{
-				if(_jumps_left > 0){
+				if(_jumpsLeft > 0){
 
 
 					// Jump
@@ -448,7 +619,7 @@ namespace StarterAssets
 						// print("Jumped!");
 						// the square root of H * -2 * G = how much velocity needed to reach desired height
 						_verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
-						_jumps_left -= 1;
+						_jumpsLeft -= 1;
 						_jumpTimeoutDelta = JumpTimeout;
 					}else{
 						_input.jump = false;
@@ -474,7 +645,7 @@ namespace StarterAssets
 			if(_input.dodge){
 				if(_dodgeTimeoutDelta <= 0.0f){
 					_horizontalSpeed += DodgeDistance;
-					_horizontalDirection += _previousDirection;
+					_horizontalDirection = _inputDirection;
 					_dodgeTimeoutDelta = DodgeTimeout;
 				}
 				_input.dodge = false;
@@ -497,6 +668,7 @@ namespace StarterAssets
 				CinemachineCameraTarget.transform.localPosition = new Vector3(_cameraPosition.x, _cameraPosition.y - 0.5f, _cameraPosition.z);
 				if(_input.sprint && Grounded){
 					_slideTime = SlideDuration;
+					_horizontalSpeed += SlideModifier;
 				}
 			}
 			_slideTime -= Time.deltaTime;
@@ -522,7 +694,7 @@ namespace StarterAssets
 				_controller.enabled = false;
 				_horizontalSpeed = 0.0f;
 				_verticalVelocity = 0.0f;
-				_jumps_left = 0;
+				_jumpsLeft = 0;
 				gameObject.transform.position = new Vector3(0.0f, 50.0f, 0.0f);
 				_controller.enabled = true;
 			}
