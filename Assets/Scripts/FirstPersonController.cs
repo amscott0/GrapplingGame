@@ -117,6 +117,8 @@ namespace StarterAssets
 
 		private float _wallJumpSpeed = 0.0f; //Small speed to get player away from wall after jumping.
 
+		private Vector3 _wallJumpDirection = Vector3.zero; // direction of jump away from wall while wall running
+
 		private float _wallJumpTimeoutDelta;
 
 		private Vector3 _inputDirection;
@@ -454,26 +456,50 @@ namespace StarterAssets
 			// making an array of a struct composed of (vector + velocity + slow down ) to iterate over before calling _controller.Move()
 			// This could allow any function to add a velocity to the array, with it's slow down time included.
 			//////////////////////////////////////////////////////////////////////////////////////////////////
+			float inputMagnitude = _input.analogMovement ? _input.move.magnitude : 1f;
+			if (_horizontalSpeed < targetSpeed - 0.1f){
+				// creates curved result rather than a linear one giving a more organic speed change
+				// note T in Lerp is clamped, so we don't need to clamp our speed
+				_speed = Mathf.Lerp(_horizontalSpeed, targetSpeed * inputMagnitude, Time.deltaTime * (SpeedChangeRate));
+				// round speed to 3 decimal places
+				_speed = Mathf.Round(_speed * 1000f) / 1000f;
+			}
+			// else if(_horizontalSpeed > targetSpeed + 0.1f)
+			// {
+			// 	// creates curved result rather than a linear one giving a more organic speed change
+			// 	// note T in Lerp is clamped, so we don't need to clamp our speed
+			// 	_speed = Mathf.Lerp(_horizontalSpeed, targetSpeed * inputMagnitude, Time.deltaTime * (effectiveSpeedChangeRate * _horizontalSpeed));
 
+			// 	// round speed to 3 decimal places
+			// 	_speed = Mathf.Round(_speed * 1000f) / 1000f;
+
+			// }
+			else
+			{
+				_speed = targetSpeed;
+			}
+			// }
 			//set _speed to targetSpeed without modification
-			_speed = targetSpeed;
+			// _speed = targetSpeed;
 			
-			//if the _horizontalSpeed is positive, decelerate. _horizontalSpeed decreases faster the larger it is.
-			if(_horizontalSpeed >= 0.02f){
+			
+			if((_horizontalSpeed <= SprintSpeed) && targetSpeed == 0.0f){ // if _horizontalSpeed speed is sufficiently small, decelerate faster
+				_horizontalSpeed -= (10.0f) * Time.deltaTime;
+			}
+			//_horizontalSpeed decreases faster the larger it is.
+			else if(_horizontalSpeed > targetSpeed){
 				// print("speed: " + _speed + " _horizontalV: " + _horizontalSpeed);
+				
 				_horizontalSpeed -= (_horizontalSpeed/2.0f) * Time.deltaTime; 
 			}
-			if((_horizontalSpeed <= (_input.sprint ? SprintSpeed : MoveSpeed)) && targetSpeed == 0.0f){ // if _horizontalSpeed speed is sufficiently small, decelerate faster
-				_horizontalSpeed -= (5.0f) * Time.deltaTime;
+			//immediately speed up to the target speed if below it
+			else if(_horizontalSpeed <= SprintSpeed && targetSpeed > 0.0f){
+				_horizontalSpeed = _speed;
+				_horizontalDirection = _inputDirection;
 			}
-			if(_horizontalSpeed == 0.0f){ // if _horizontalSpeed is zero, set _horizontalDirection to Vector3.zero
+			if(_horizontalSpeed <= 0.0f){ // if _horizontalSpeed is zero, set _horizontalDirection to Vector3.zero
 				_horizontalSpeed = 0.0f;
 				_horizontalDirection = Vector3.zero;
-			}
-			//immediately speed up to the target speed if below it
-			if(_horizontalSpeed <= targetSpeed){
-				_horizontalSpeed = targetSpeed;
-				_horizontalDirection = _inputDirection;
 			}
 			//Decrease vertical velocity every update
 			// apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
@@ -494,15 +520,19 @@ namespace StarterAssets
 			//find how related our desired direction (_inputDirection) is to our currently moved in direction (_horizontalDirection)
 			//if it is in opposite directions, decrease our speed
 			if(Vector3.Dot(_horizontalDirection, _inputDirection.normalized) <= 0.0f){
+				
 				_horizontalSpeed -= targetSpeed * Time.deltaTime;
 			}
-			//rotate our moving direction towards our desired direction
-			_horizontalDirection = Vector3.RotateTowards(_horizontalDirection, _inputDirection.normalized, Mathf.Abs(1f/Vector3.Dot(_horizontalDirection, _inputDirection.normalized))*_inputDirection.magnitude*Time.deltaTime, 0.0f);
-			// print("_horizontalSpeed: " + _horizontalSpeed + " _horizontalDirection: " + _horizontalDirection);
+			else{
+				//rotate our moving direction towards our desired direction
+				_horizontalDirection = Vector3.RotateTowards(_horizontalDirection, _inputDirection.normalized, Mathf.Abs(1f/Vector3.Dot(_horizontalDirection, _inputDirection.normalized))*_inputDirection.magnitude*Time.deltaTime, 0.0f);
+			}
+			print("_horizontalSpeed: " + _horizontalSpeed + " _horizontalDirection: " + _horizontalDirection + " targetSpeed: " + targetSpeed);
 			// print("_verticalVelocity: " + _verticalVelocity);
+			// print("wallJumpDirection: " + _wallJumpDirection);
 			_controller.Move((new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime) +
 							(_horizontalDirection.normalized * (_horizontalSpeed * Time.deltaTime)) +
-							(_previousWallNormal * (_wallJumpSpeed * Time.deltaTime)));
+							(_wallJumpDirection * (_wallJumpSpeed * Time.deltaTime)));
 		}
 		private void WallRunAndSlide(){
 
@@ -548,9 +578,9 @@ namespace StarterAssets
 			//if we are not currently wall running, remember the last good _inputDirection in _wallRunDirection, so we can set _horizontalDirection to this value when we are wall running
 			if(!_wallRunning){
 				_wallRunDirection = _inputDirection.normalized;
-				print("_wallJumpSpeed: " + _wallJumpSpeed);
-				if(_wallJumpSpeed >= 0.0f) // _wallJumpSpeed is just a speed that takes us away from walls with a burst and then goes away,, it is decreased here
-					_wallJumpSpeed -= 10f * Time.deltaTime;
+				// print("_wallJumpSpeed: " + _wallJumpSpeed);
+				if(_wallJumpSpeed > 0.0f) // _wallJumpSpeed is just a speed that takes us away from walls with a burst and then goes away,, it is decreased here
+					_wallJumpSpeed -= 20f * Time.deltaTime;
 				else
 					_wallJumpSpeed = 0.0f;
 			}
@@ -581,6 +611,7 @@ namespace StarterAssets
 						// _horizontalDirection = (_previousWallNormal + _wallRunDirection.normalized* 0.50f);
 						// _wallJumpVector = _previousWallNormal + _wallRunDirection.normalized;
 						_wallJumpSpeed = WallJumpHorizontalSpeed;
+						_wallJumpDirection = _previousWallNormal;
 						print("wall jumped");
 					}
 					_wallRunning = false;

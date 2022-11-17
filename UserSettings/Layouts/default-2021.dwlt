@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 2560
     height: 1349.3334
   m_ShowMode: 4
-  m_Title: Git for Unity
+  m_Title: Game
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 76
+  controlID: 688
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: Window
+  m_Name: InspectorWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -68,14 +68,14 @@ MonoBehaviour:
     y: 0
     width: 549.3334
     height: 1299.3334
-  m_MinSize: {x: 101, y: 121}
-  m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 12}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
   - {fileID: 12}
-  m_Selected: 1
-  m_LastSelected: 0
+  m_Selected: 0
+  m_LastSelected: 1
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -224,7 +224,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 96
+  controlID: 59
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -249,7 +249,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 97
+  controlID: 60
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -305,14 +305,14 @@ MonoBehaviour:
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
     m_SaveData: []
-  progressMessageClearTime: 8746.5481996
+  progressMessageClearTime: -1
   notificationClearTime: -1
   timeSinceLastRotation: -1
   currentBranchAndRemoteHasUpdate: 0
   currentTrackingStatusHasUpdate: 0
-  currentStatusEntriesHasUpdate: 0
+  currentStatusEntriesHasUpdate: 1
   repositoryProgressHasUpdate: 1
-  appManagerProgressHasUpdate: 0
+  appManagerProgressHasUpdate: 1
   changeTab: 3
   activeTab: 3
   initProjectView:
@@ -397,9 +397,9 @@ MonoBehaviour:
     localBranches: []
     remoteBranches: []
   changesView:
-    currentBranchHasUpdate: 0
-    currentStatusEntriesHasUpdate: 0
-    currentLocksHasUpdate: 0
+    currentBranchHasUpdate: 1
+    currentStatusEntriesHasUpdate: 1
+    currentLocksHasUpdate: 1
     commitBody: 
     commitMessage: 
     currentBranch: master
@@ -407,11 +407,49 @@ MonoBehaviour:
     treeChanges:
       assets:
         keys:
-        - 00000000000000003000000000000000
+        - 00000000000000001000000000000000
+        - d945aebbdf256954aadf016c19fcea09
+        - 55919ac34a26952479f3fc91f777b2fa
         values:
-        - path: ProjectSettings\TagManager.asset
-          label: TagManager.asset
+        - path: Assets
+          label: Assets
+          level: 0
+          isFolder: 1
+          isContainer: 0
+          isCollapsed: 0
+          isHidden: 0
+          isActive: 0
+          treeIsCheckable: 1
+          checkState: 0
+          isLocked: 0
+          gitStatusEntry:
+            path: 
+            fullPath: 
+            projectPath: 
+            originalPath: 
+            indexStatus: 0
+            workTreeStatus: 0
+        - path: Assets\Scripts
+          label: Scripts
           level: 1
+          isFolder: 1
+          isContainer: 0
+          isCollapsed: 0
+          isHidden: 0
+          isActive: 0
+          treeIsCheckable: 1
+          checkState: 0
+          isLocked: 0
+          gitStatusEntry:
+            path: 
+            fullPath: 
+            projectPath: 
+            originalPath: 
+            indexStatus: 0
+            workTreeStatus: 0
+        - path: Assets\Scripts\FirstPersonController.cs
+          label: FirstPersonController.cs
+          level: 2
           isFolder: 0
           isContainer: 0
           isCollapsed: 0
@@ -421,21 +459,40 @@ MonoBehaviour:
           checkState: 0
           isLocked: 0
           gitStatusEntry:
-            path: ProjectSettings\TagManager.asset
-            fullPath: O:\UnityHub\Grappling Game\ProjectSettings\TagManager.asset
-            projectPath: ProjectSettings\TagManager.asset
+            path: Assets\Scripts\FirstPersonController.cs
+            fullPath: O:\UnityHub\Grappling Game\Assets\Scripts\FirstPersonController.cs
+            projectPath: Assets\Scripts\FirstPersonController.cs
             originalPath: 
             indexStatus: 0
             workTreeStatus: 3
       folders:
         keys:
-        - ProjectSettings
+        - Assets
+        - Assets\Scripts
         - UserSettings
         - UserSettings\Layouts
         values:
-        - path: ProjectSettings
-          label: ProjectSettings
+        - path: Assets
+          label: Assets
           level: 0
+          isFolder: 1
+          isContainer: 0
+          isCollapsed: 0
+          isHidden: 0
+          isActive: 0
+          treeIsCheckable: 1
+          checkState: 0
+          isLocked: 0
+          gitStatusEntry:
+            path: 
+            fullPath: 
+            projectPath: 
+            originalPath: 
+            indexStatus: 0
+            workTreeStatus: 0
+        - path: Assets\Scripts
+          label: Scripts
+          level: 1
           isFolder: 1
           isContainer: 0
           isCollapsed: 0
@@ -515,8 +572,8 @@ MonoBehaviour:
           originalPath: 
           indexStatus: 0
           workTreeStatus: 0
-      - path: ProjectSettings
-        label: ProjectSettings
+      - path: Assets
+        label: Assets
         level: 0
         isFolder: 1
         isContainer: 0
@@ -533,9 +590,27 @@ MonoBehaviour:
           originalPath: 
           indexStatus: 0
           workTreeStatus: 0
-      - path: ProjectSettings\TagManager.asset
-        label: TagManager.asset
+      - path: Assets\Scripts
+        label: Scripts
         level: 1
+        isFolder: 1
+        isContainer: 0
+        isCollapsed: 0
+        isHidden: 0
+        isActive: 0
+        treeIsCheckable: 1
+        checkState: 0
+        isLocked: 0
+        gitStatusEntry:
+          path: 
+          fullPath: 
+          projectPath: 
+          originalPath: 
+          indexStatus: 0
+          workTreeStatus: 0
+      - path: Assets\Scripts\FirstPersonController.cs
+        label: FirstPersonController.cs
+        level: 2
         isFolder: 0
         isContainer: 0
         isCollapsed: 0
@@ -545,9 +620,9 @@ MonoBehaviour:
         checkState: 0
         isLocked: 0
         gitStatusEntry:
-          path: ProjectSettings\TagManager.asset
-          fullPath: O:\UnityHub\Grappling Game\ProjectSettings\TagManager.asset
-          projectPath: ProjectSettings\TagManager.asset
+          path: Assets\Scripts\FirstPersonController.cs
+          fullPath: O:\UnityHub\Grappling Game\Assets\Scripts\FirstPersonController.cs
+          projectPath: Assets\Scripts\FirstPersonController.cs
           originalPath: 
           indexStatus: 0
           workTreeStatus: 3
@@ -587,24 +662,6 @@ MonoBehaviour:
           originalPath: 
           indexStatus: 0
           workTreeStatus: 0
-      - path: UserSettings\Layouts\CurrentMaximizeLayout.dwlt
-        label: CurrentMaximizeLayout.dwlt
-        level: 2
-        isFolder: 0
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: UserSettings\Layouts\CurrentMaximizeLayout.dwlt
-          fullPath: O:\UnityHub\Grappling Game\UserSettings\Layouts\CurrentMaximizeLayout.dwlt
-          projectPath: UserSettings\Layouts\CurrentMaximizeLayout.dwlt
-          originalPath: 
-          indexStatus: 0
-          workTreeStatus: 5
       - path: UserSettings\Layouts\default-2021.dwlt
         label: default-2021.dwlt
         level: 2
@@ -643,33 +700,27 @@ MonoBehaviour:
           indexStatus: 0
           workTreeStatus: 0
     gitStatusEntries:
-    - path: ProjectSettings\TagManager.asset
-      fullPath: O:\UnityHub\Grappling Game\ProjectSettings\TagManager.asset
-      projectPath: ProjectSettings\TagManager.asset
+    - path: Assets\Scripts\FirstPersonController.cs
+      fullPath: O:\UnityHub\Grappling Game\Assets\Scripts\FirstPersonController.cs
+      projectPath: Assets\Scripts\FirstPersonController.cs
       originalPath: 
       indexStatus: 0
       workTreeStatus: 3
-    - path: UserSettings\Layouts\CurrentMaximizeLayout.dwlt
-      fullPath: O:\UnityHub\Grappling Game\UserSettings\Layouts\CurrentMaximizeLayout.dwlt
-      projectPath: UserSettings\Layouts\CurrentMaximizeLayout.dwlt
-      originalPath: 
-      indexStatus: 0
-      workTreeStatus: 5
     - path: UserSettings\Layouts\default-2021.dwlt
       fullPath: O:\UnityHub\Grappling Game\UserSettings\Layouts\default-2021.dwlt
       projectPath: UserSettings\Layouts\default-2021.dwlt
       originalPath: 
       indexStatus: 0
       workTreeStatus: 3
-    changedFilesText: 3 changed files
+    changedFilesText: 2 changed files
     lastCurrentBranchChangedEvent:
-      updatedTimeString: 2022-11-02T03:13:37.503-06:00
+      updatedTimeString: 2022-11-06T20:56:24.551-07:00
       cacheType: 1
     lastStatusEntriesChangedEvent:
-      updatedTimeString: 2022-11-02T03:37:58.853-06:00
+      updatedTimeString: 2022-11-06T20:58:18.295-07:00
       cacheType: 6
     lastLocksChangedEvent:
-      updatedTimeString: 2022-11-02T03:36:35.467-06:00
+      updatedTimeString: 2022-11-06T20:58:15.839-07:00
       cacheType: 7
   historyView:
     currentLogHasUpdate: 0
@@ -5242,7 +5293,7 @@ MonoBehaviour:
   currentRemoteName: origin
   currentBranch: master
   currentRemoteUrl: https://github.com/amscott0/GrapplingGame.git
-  statusAhead: 1
+  statusAhead: 0
   statusBehind: 0
   hasItemsToCommit: 1
   isTrackingRemoteBranch: 1
@@ -5255,13 +5306,13 @@ MonoBehaviour:
     m_Image: {fileID: 0}
     m_Tooltip: Url of the origin remote
   lastCurrentBranchAndRemoteChangedEvent:
-    updatedTimeString: 2022-11-02T03:13:37.503-06:00
+    updatedTimeString: 2022-11-06T18:22:36.918-07:00
     cacheType: 1
   lastTrackingStatusChangedEvent:
-    updatedTimeString: 2022-11-02T03:37:59.057-06:00
+    updatedTimeString: 2022-11-06T18:22:39.159-07:00
     cacheType: 5
   lastStatusEntriesChangedEvent:
-    updatedTimeString: 2022-11-02T03:37:58.853-06:00
+    updatedTimeString: 2022-11-06T18:56:49.624-07:00
     cacheType: 6
   pullButtonContent:
     m_Text: Pull
@@ -5279,7 +5330,7 @@ MonoBehaviour:
     m_Text: Fetch
     m_Image: {fileID: 0}
     m_Tooltip: 
-  repositoryProgressValue: 0.99934256
+  repositoryProgressValue: 0
   repositoryProgressMessage: 
   appManagerProgressValue: 1
   appManagerProgressMessage: 
@@ -5339,9 +5390,9 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: e8740000
-    m_LastClickedID: 29928
-    m_ExpandedIDs: 00000000e874000000ca9a3bffffff7f
+    m_SelectedIDs: f0740000
+    m_LastClickedID: 29936
+    m_ExpandedIDs: 000000000c750000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -5369,7 +5420,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000e8740000
+    m_ExpandedIDs: 000000000c750000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -5394,9 +5445,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 10f8ffff
-    m_LastClickedInstanceID: -2032
-    m_HadKeyboardFocusLastEvent: 0
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -5499,9 +5550,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: 4cfaffff16fbffff
+      m_SelectedIDs: 6ef7ffff
+      m_LastClickedID: -2194
+      m_ExpandedIDs: 18fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -5751,9 +5802,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -0.4995623, y: 9.205679, z: -2.919634}
+    m_Target: {x: 17.520102, y: -95.32152, z: 206.22528}
     speed: 2
-    m_Value: {x: -0.4995623, y: 9.205679, z: -2.919634}
+    m_Value: {x: 17.520102, y: -95.32152, z: 206.22528}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -5800,13 +5851,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.16010179, y: 0.01391502, z: -0.002256998, w: -0.9870014}
+    m_Target: {x: -0.22326933, y: -0.034500487, z: 0.007906712, w: -0.9741195}
     speed: 2
-    m_Value: {x: -0.16010153, y: 0.013914999, z: -0.0022569946, w: -0.98699987}
+    m_Value: {x: -0.22326814, y: -0.0345003, z: 0.007906669, w: -0.97411424}
   m_Size:
-    m_Target: 3.4188333
+    m_Target: 121.505775
     speed: 2
-    m_Value: 3.4188333
+    m_Value: 121.505775
   m_Ortho:
     m_Target: 0
     speed: 2
