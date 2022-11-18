@@ -25,7 +25,8 @@ namespace StarterAssets
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 		public void OnMove(InputValue value)
 		{
-			MoveInput(value.Get<Vector2>());
+
+			MoveInput(new Move(value).Execute());
 			//consider making a concrete class here and in the other functions that implements a command interface and execute calls MoveInput
 			//eg. ConcreteMoveCommand.execute() returns Vector2 newMoveDirection 
 		}
@@ -34,24 +35,29 @@ namespace StarterAssets
 		{
 			if(cursorInputForLook)
 			{
-				LookInput(value.Get<Vector2>());
+
+				LookInput(new Look(value).Execute());
 			}
 		}
 
 		public void OnJump(InputValue value)
 		{
-			JumpInput(value.isPressed);
+
+			JumpInput(new Jump(value).Execute());
 		}
 
 		public void OnSprint(InputValue value)
 		{
-			SprintInput(value.isPressed);
+
+			SprintInput(new Sprint(value).Execute());
 		}
 		public void OnDodge(InputValue value){
-			DodgeInput(value.isPressed);
+
+			DodgeInput(new Dodge(value).Execute());
 		}
 		public void OnSlide(InputValue value){
-			SlideInput(value.isPressed);
+
+			SlideInput(new Slide(value).Execute());
 		}
 #endif
 
