@@ -122,6 +122,8 @@ namespace StarterAssets
 		private float _wallJumpTimeoutDelta;
 
 		private Vector3 _inputDirection;
+
+		private GrapplingBehavior _grappleType;
 		
 
 	
@@ -161,6 +163,8 @@ namespace StarterAssets
 			_input = GetComponent<StarterAssetsInputs>();
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 			_playerInput = GetComponent<PlayerInput>();
+			_grappleType = new GrapplingBehavior(_input);
+			
 #else
 			Debug.LogError( "Starter Assets package is missing dependencies. Please use Tools/Starter Assets/Reinstall Dependencies to fix it");
 #endif
@@ -176,6 +180,8 @@ namespace StarterAssets
 
 		private void Update()
 		{
+			_grappleType.grapple();
+			
 			WallRunAndSlide();
 			Jump();
 			GroundedCheck();
