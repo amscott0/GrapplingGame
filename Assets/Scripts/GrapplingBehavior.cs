@@ -10,6 +10,7 @@ using System;
 public class GrapplingBehavior
 {
     private bool prevClicked = false;
+    bool noPointFound = true;
     private StarterAssetsInputs _input;
     private LineRenderer _lr;
 
@@ -26,19 +27,40 @@ public class GrapplingBehavior
     }
     
     public Vector3 grapple(){
-        RaycastHit hit;
-        if(Physics.Raycast(_camera.position, _camera.forward, out hit, 100f)){
-            grapplingPos = hit.point;
-        }
         if(_input.grapple){
+            
+            if(!prevClicked){
+                prevClicked = true;
+                RaycastHit hit;
+                if(Physics.Raycast(_camera.position, _camera.forward, out hit, 100f)){
+                    grapplingPos = hit.point;
+                    noPointFound = true;
+                }
+                else{
+                    noPointFound = false;
+                }
+            }
+            if(!noPointFound){
+                _lr.SetPosition(0, _playerPos.position);
+                _lr.SetPosition(1, _playerPos.position);
+                return Vector3.zero;
+            }
+            
             _lr.SetPosition(0, _playerPos.position);
             _lr.SetPosition(1, grapplingPos);
             Debug.Log("grappled to " + grapplingPos);
-            return Vector3.Normalize(grapplingPos);
+
+            float magnitudeMult = MathF.Sqrt(Vector3.Distance(_playerPos.position, grapplingPos));
+
+            return (-magnitudeMult) *3* Vector3.Normalize(_playerPos.position - grapplingPos);
         }
         else{
             _lr.SetPosition(0, _playerPos.position);
             _lr.SetPosition(1, _playerPos.position);
+
+            prevClicked = false;
+            // grapplingPos = _playerPos.position;
+
             return Vector3.zero;
         }
     }
