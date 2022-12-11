@@ -751,7 +751,7 @@ namespace StarterAssets
 
 		private void OnControllerColliderHit(ControllerColliderHit hit){
 
-			if((hit.moveDirection.y < -0.3f) || hit.moveDirection == hit.normal){
+			if((hit.moveDirection.y < -0.3f) || hit.moveDirection == hit.normal || hit.gameObject.tag == "PushableObject"){
 				return;
 			}
 

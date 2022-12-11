@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3527337007662940901}
   m_Layer: 0
   m_Name: Box_100x100x100_Prefab_Pushable
-  m_TagString: Untagged
+  m_TagString: PushableObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 73
