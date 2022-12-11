@@ -7,26 +7,39 @@ using System;
     using UnityEngine.InputSystem;
 #endif
 
-public class GrapplingBehavior
+public abstract class GrapplingBehavior
 {
-    private bool prevClicked = false;
-    bool noPointFound = true;
-    private StarterAssetsInputs _input;
-    private LineRenderer _lr;
+    public bool prevClicked = false;
+    public bool noPointFound = true;
+    public StarterAssetsInputs _input;
+    public LineRenderer _lr;
 
-    private Vector3 grapplingPos;
+    public Vector3 grapplingPos;
 
-    private Transform _camera, _playerPos;
+    public Transform _camera, _playerPos;
 
     
-    public GrapplingBehavior(StarterAssetsInputs inputs, LineRenderer lr, Transform plyr,Transform cmra){
+    // public GrapplingBehavior(StarterAssetsInputs inputs, LineRenderer lr, Transform plyr,Transform cmra){
+    //     _input = inputs;
+    //     _lr = lr;
+    //     _camera = cmra;
+    //     _playerPos = plyr;
+    // }
+    
+    public abstract Vector3 grapple();
+    
+
+}
+
+public class AntiGrav : GrapplingBehavior{
+
+    public AntiGrav(StarterAssetsInputs inputs, LineRenderer lr, Transform plyr,Transform cmra){
         _input = inputs;
         _lr = lr;
         _camera = cmra;
         _playerPos = plyr;
     }
-    
-    public Vector3 grapple(){
+    public override Vector3 grapple(){
         if(_input.grapple){
             
             if(!prevClicked){
@@ -52,7 +65,7 @@ public class GrapplingBehavior
 
             float magnitudeMult = MathF.Sqrt(Vector3.Distance(_playerPos.position, grapplingPos));
 
-            return (-magnitudeMult) *6* Vector3.Normalize(_playerPos.position - grapplingPos);
+            return (-magnitudeMult/20) * Vector3.Normalize(_playerPos.position - grapplingPos);
         }
         else{
             _lr.SetPosition(0, _playerPos.position);
@@ -64,10 +77,74 @@ public class GrapplingBehavior
             return Vector3.zero;
         }
     }
-    
-
 }
 
+public class Impulse : GrapplingBehavior{
+
+    public Impulse(StarterAssetsInputs inputs, LineRenderer lr, Transform plyr,Transform cmra){
+        _input = inputs;
+        _lr = lr;
+        _camera = cmra;
+        _playerPos = plyr;
+    }
+    public override Vector3 grapple(){
+        if(_input.grapple){
+            
+            if(!prevClicked){
+                prevClicked = true;
+                RaycastHit hit;
+                if(Physics.Raycast(_camera.position, _camera.forward, out hit, 100f)){
+                    grapplingPos = hit.point;
+                    // noPointFound = true;
+                    
+                    _lr.SetPosition(0, _playerPos.position);
+                    _lr.SetPosition(1, grapplingPos);
+                    Debug.Log("grappled to " + grapplingPos);
+
+                    float magnitudeMult = MathF.Sqrt(Vector3.Distance(_playerPos.position, grapplingPos));
+
+                    return (-magnitudeMult/0.1f) * Vector3.Normalize(_playerPos.position - grapplingPos);
+
+                }
+                else{
+                    // noPointFound = false;
+                }
+            }
+            // if(!noPointFound){
+            _lr.SetPosition(0, _playerPos.position);
+            _lr.SetPosition(1, _playerPos.position);
+            return Vector3.zero;
+            // }
+            
+            
+        }
+        else{
+            _lr.SetPosition(0, _playerPos.position);
+            _lr.SetPosition(1, _playerPos.position);
+
+            prevClicked = false;
+            // grapplingPos = _playerPos.position;
+
+            return Vector3.zero;
+        }
+    }
+}
+
+public class Unequipped : GrapplingBehavior{
+
+    public Unequipped(StarterAssetsInputs inputs, LineRenderer lr, Transform plyr,Transform cmra){
+        _input = inputs;
+        _lr = lr;
+        _camera = cmra;
+        _playerPos = plyr;
+    }
+    public override Vector3 grapple(){
+        _lr.SetPosition(0, _playerPos.position);
+        _lr.SetPosition(1, _playerPos.position);
+        return Vector3.zero;
+        
+    }
+}
 
 
 
