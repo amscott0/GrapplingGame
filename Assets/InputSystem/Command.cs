@@ -69,3 +69,13 @@ public class Slide : Command
         return this.val.isPressed;
     }
 }
+public class Grapple : Command
+{
+    private InputValue val;
+    public Grapple(InputValue val){
+        this.val = val;
+    }
+    new public bool Execute(){
+        return this.val.isPressed;
+    }
+}

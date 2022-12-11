@@ -14,6 +14,7 @@ namespace StarterAssets
 		public bool sprint;
 		public bool dodge;
 		public bool slide;
+		public bool grapple;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -59,6 +60,10 @@ namespace StarterAssets
 
 			SlideInput(new Slide(value).Execute());
 		}
+		public void OnGrapple(InputValue value){
+
+			GrappleInput(new Grapple(value).Execute());
+		}
 #endif
 
 
@@ -89,7 +94,9 @@ namespace StarterAssets
 		public void SlideInput(bool newSlideState){
 			slide = newSlideState;
 		}
-		
+		public void GrappleInput(bool newSlideState){
+			grapple = newSlideState;
+		}
 		private void OnApplicationFocus(bool hasFocus)
 		{
 			SetCursorState(cursorLocked);
