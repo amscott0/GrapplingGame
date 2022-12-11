@@ -16,6 +16,8 @@ namespace StarterAssets
 		public bool slide;
 		public bool grapple;
 
+		public bool switchGrapple;
+
 		[Header("Movement Settings")]
 		public bool analogMovement;
 
@@ -64,6 +66,10 @@ namespace StarterAssets
 
 			GrappleInput(new Grapple(value).Execute());
 		}
+		public void OnSwitchGrapple(InputValue value){
+
+			SwitchGrappleInput(new SwitchGrapple(value).Execute());
+		}
 #endif
 
 
@@ -94,8 +100,11 @@ namespace StarterAssets
 		public void SlideInput(bool newSlideState){
 			slide = newSlideState;
 		}
-		public void GrappleInput(bool newSlideState){
-			grapple = newSlideState;
+		public void GrappleInput(bool newGrappleState){
+			grapple = newGrappleState;
+		}
+		public void SwitchGrappleInput(bool newSwitchGrapple){
+			switchGrapple = newSwitchGrapple;
 		}
 		private void OnApplicationFocus(bool hasFocus)
 		{

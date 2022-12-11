@@ -79,3 +79,13 @@ public class Grapple : Command
         return this.val.isPressed;
     }
 }
+public class SwitchGrapple : Command
+{
+    private InputValue val;
+    public SwitchGrapple(InputValue val){
+        this.val = val;
+    }
+    new public bool Execute(){
+        return this.val.isPressed;
+    }
+}

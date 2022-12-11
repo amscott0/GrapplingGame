@@ -167,7 +167,7 @@ namespace StarterAssets
 			_input = GetComponent<StarterAssetsInputs>();
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 			_playerInput = GetComponent<PlayerInput>();
-			_grappleType = new Impulse(_input, GetComponent<LineRenderer>(), _grapplingGun.GetComponentInChildren<Transform>(), CinemachineCameraTarget.transform);
+			_grappleType = new AntiGrav(_input, GetComponent<LineRenderer>(), _grapplingGun.GetComponentInChildren<Transform>(), CinemachineCameraTarget.transform);
 			
 			
 #else
@@ -189,6 +189,7 @@ namespace StarterAssets
 			GroundedCheck();
 			Dodge();
 			Slide();
+			SwitchGrappleInput();
 			Move();
 		}
 
@@ -196,7 +197,27 @@ namespace StarterAssets
 		{
 			CameraRotation();
 		}
-
+		private int notifyUISwitch(){
+			UIDisplay.observables -= notifyUISwitch;
+			return -1;
+		}
+		private void SwitchGrappleInput(){
+			if(_input.switchGrapple){
+				UIDisplay.observables += notifyUISwitch;
+				_input.switchGrapple = false;
+				if(_grappleType.GetType().Name == "AntiGrav"){
+					_grappleType = new Impulse(_input, GetComponent<LineRenderer>(), _grapplingGun.GetComponentInChildren<Transform>(), CinemachineCameraTarget.transform);
+				}
+				else if(_grappleType.GetType().Name == "Impulse"){
+					_grapplingGun.SetActive(false);
+					_grappleType = new Unequipped(_input, GetComponent<LineRenderer>(), _grapplingGun.GetComponentInChildren<Transform>(), CinemachineCameraTarget.transform);
+				}
+				else{
+					_grapplingGun.SetActive(true);
+					_grappleType = new AntiGrav(_input, GetComponent<LineRenderer>(), _grapplingGun.GetComponentInChildren<Transform>(), CinemachineCameraTarget.transform);
+				}
+			}
+		}
 		private void GroundedCheck()
 		{
 			// set sphere position, with offset
@@ -480,9 +501,9 @@ namespace StarterAssets
 			}
 
 		}
-		private int notifyUI(){
+		private int notifyUIDodge(){
 			
-			UIDisplay.observables -= notifyUI;
+			UIDisplay.observables -= notifyUIDodge;
 			
 			return 1;
 		}
@@ -492,7 +513,7 @@ namespace StarterAssets
 					_horizontalSpeed += DodgeDistance;
 					_horizontalDirection = _inputDirection;
 					_dodgeTimeoutDelta = DodgeTimeout;
-					UIDisplay.observables += notifyUI;
+					UIDisplay.observables += notifyUIDodge;
 				}
 				_input.dodge = false;
 			}
