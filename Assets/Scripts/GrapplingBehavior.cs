@@ -52,7 +52,7 @@ public class GrapplingBehavior
 
             float magnitudeMult = MathF.Sqrt(Vector3.Distance(_playerPos.position, grapplingPos));
 
-            return (-magnitudeMult) *3* Vector3.Normalize(_playerPos.position - grapplingPos);
+            return (-magnitudeMult) *6* Vector3.Normalize(_playerPos.position - grapplingPos);
         }
         else{
             _lr.SetPosition(0, _playerPos.position);
