@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CinemachineTarget
   - WallRunAble
+  - PushableObject
   layers:
   - Default
   - TransparentFX

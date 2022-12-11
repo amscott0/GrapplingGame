@@ -123,6 +123,8 @@ namespace StarterAssets
 
 		private Vector3 _inputDirection;
 
+		private Vector3 _grappleDirection;
+
 		private GrapplingBehavior _grappleType;
 
 
@@ -491,6 +493,9 @@ namespace StarterAssets
 			//set _speed to targetSpeed without modification
 			// _speed = targetSpeed;
 			
+			_grappleDirection += _grappleType.grapple();
+
+			_grappleDirection = _grappleDirection.normalized * (_grappleDirection.magnitude - 100.0f * Time.deltaTime);
 			
 			if((_horizontalSpeed <= SprintSpeed) && targetSpeed == 0.0f){ // if _horizontalSpeed speed is sufficiently small, decelerate faster
 				_horizontalSpeed -= (10.0f) * Time.deltaTime;
@@ -514,7 +519,7 @@ namespace StarterAssets
 			// apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
 			if (_verticalVelocity < _terminalVelocity)
 			{
-				if(_wallRunning){
+				if(_wallRunning || _grappleDirection.magnitude >= 0.5f){
 					_verticalVelocity = 0.0f; // no gravity when wall running
 				}
 				else{
@@ -542,7 +547,7 @@ namespace StarterAssets
 			_controller.Move((new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime) +
 							(_horizontalDirection.normalized * (_horizontalSpeed * Time.deltaTime)) +
 							(_wallJumpDirection * (_wallJumpSpeed * Time.deltaTime)) +
-							_grappleType.grapple() * Time.deltaTime
+							_grappleDirection * Time.deltaTime
 							);
 		}
 		private void WallRunAndSlide(){
