@@ -48,7 +48,7 @@ namespace StarterAssets
 		[Tooltip("Time required to pass before entering the fall state. Useful for walking down stairs")]
 		public float FallTimeout = 0.15f;
 		[Tooltip("Time required to pass before being able to dodge again.")]
-		public float DodgeTimeout = 0.25f;
+		public float DodgeTimeout;
 
 		[Tooltip("Initial speed of the player's dodge")]
 		public float DodgeDistance = 50.0f;
@@ -527,7 +527,7 @@ namespace StarterAssets
 				//rotate our moving direction towards our desired direction
 				_horizontalDirection = Vector3.RotateTowards(_horizontalDirection, _inputDirection.normalized, Mathf.Abs(1f/Vector3.Dot(_horizontalDirection, _inputDirection.normalized))*_inputDirection.magnitude*Time.deltaTime, 0.0f);
 			}
-			print("_horizontalSpeed: " + _horizontalSpeed + " _horizontalDirection: " + _horizontalDirection + " targetSpeed: " + targetSpeed);
+			// print("_horizontalSpeed: " + _horizontalSpeed + " _horizontalDirection: " + _horizontalDirection + " targetSpeed: " + targetSpeed);
 			// print("_verticalVelocity: " + _verticalVelocity);
 			// print("wallJumpDirection: " + _wallJumpDirection);
 			_controller.Move((new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime) +
@@ -672,12 +672,19 @@ namespace StarterAssets
 			}
 
 		}
+		private int notifyUI(){
+			
+			UIDisplay.observables -= notifyUI;
+			
+			return 1;
+		}
 		private void Dodge(){
 			if(_input.dodge){
 				if(_dodgeTimeoutDelta <= 0.0f){
 					_horizontalSpeed += DodgeDistance;
 					_horizontalDirection = _inputDirection;
 					_dodgeTimeoutDelta = DodgeTimeout;
+					UIDisplay.observables += notifyUI;
 				}
 				_input.dodge = false;
 			}

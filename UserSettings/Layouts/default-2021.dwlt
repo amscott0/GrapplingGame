@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 2560
     height: 1349.3334
   m_ShowMode: 4
-  m_Title: Git for Unity
+  m_Title: Scene
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 104
+  controlID: 98
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -68,8 +68,8 @@ MonoBehaviour:
     y: 0
     width: 549.3334
     height: 1299.3334
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 101, y: 121}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 12}
   m_Panes:
   - {fileID: 14}
@@ -95,8 +95,8 @@ MonoBehaviour:
     y: 0
     width: 294.66666
     height: 958
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -121,8 +121,8 @@ MonoBehaviour:
     y: 958
     width: 2010.6666
     height: 341.33337
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 101, y: 121}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 13}
@@ -224,7 +224,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 58
+  controlID: 17
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -249,7 +249,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 59
+  controlID: 18
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -305,7 +305,7 @@ MonoBehaviour:
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
     m_SaveData: []
-  progressMessageClearTime: -1
+  progressMessageClearTime: 119869.2740873
   notificationClearTime: -1
   timeSinceLastRotation: -1
   currentBranchAndRemoteHasUpdate: 0
@@ -409,8 +409,46 @@ MonoBehaviour:
         keys: []
         values: []
       folders:
-        keys: []
-        values: []
+        keys:
+        - UserSettings
+        - UserSettings\Layouts
+        values:
+        - path: UserSettings
+          label: UserSettings
+          level: 0
+          isFolder: 1
+          isContainer: 0
+          isCollapsed: 0
+          isHidden: 0
+          isActive: 0
+          treeIsCheckable: 1
+          checkState: 0
+          isLocked: 0
+          gitStatusEntry:
+            path: 
+            fullPath: 
+            projectPath: 
+            originalPath: 
+            indexStatus: 0
+            workTreeStatus: 0
+        - path: UserSettings\Layouts
+          label: Layouts
+          level: 1
+          isFolder: 1
+          isContainer: 0
+          isCollapsed: 0
+          isHidden: 0
+          isActive: 0
+          treeIsCheckable: 1
+          checkState: 0
+          isLocked: 0
+          gitStatusEntry:
+            path: 
+            fullPath: 
+            projectPath: 
+            originalPath: 
+            indexStatus: 0
+            workTreeStatus: 0
       checkedFileNodes:
         keys: []
         values: []
@@ -439,6 +477,60 @@ MonoBehaviour:
           originalPath: 
           indexStatus: 0
           workTreeStatus: 0
+      - path: UserSettings
+        label: UserSettings
+        level: 0
+        isFolder: 1
+        isContainer: 0
+        isCollapsed: 0
+        isHidden: 0
+        isActive: 0
+        treeIsCheckable: 1
+        checkState: 0
+        isLocked: 0
+        gitStatusEntry:
+          path: 
+          fullPath: 
+          projectPath: 
+          originalPath: 
+          indexStatus: 0
+          workTreeStatus: 0
+      - path: UserSettings\Layouts
+        label: Layouts
+        level: 1
+        isFolder: 1
+        isContainer: 0
+        isCollapsed: 0
+        isHidden: 0
+        isActive: 0
+        treeIsCheckable: 1
+        checkState: 0
+        isLocked: 0
+        gitStatusEntry:
+          path: 
+          fullPath: 
+          projectPath: 
+          originalPath: 
+          indexStatus: 0
+          workTreeStatus: 0
+      - path: UserSettings\Layouts\default-2021.dwlt
+        label: default-2021.dwlt
+        level: 2
+        isFolder: 0
+        isContainer: 0
+        isCollapsed: 0
+        isHidden: 0
+        isActive: 0
+        treeIsCheckable: 1
+        checkState: 0
+        isLocked: 0
+        gitStatusEntry:
+          path: UserSettings\Layouts\default-2021.dwlt
+          fullPath: O:\UnityHub\Grappling Game\UserSettings\Layouts\default-2021.dwlt
+          projectPath: UserSettings\Layouts\default-2021.dwlt
+          originalPath: 
+          indexStatus: 0
+          workTreeStatus: 3
       selectedNode:
         path: 
         label: 
@@ -458,13 +550,19 @@ MonoBehaviour:
           originalPath: 
           indexStatus: 0
           workTreeStatus: 0
-    gitStatusEntries: []
-    changedFilesText: No changed files
+    gitStatusEntries:
+    - path: UserSettings\Layouts\default-2021.dwlt
+      fullPath: O:\UnityHub\Grappling Game\UserSettings\Layouts\default-2021.dwlt
+      projectPath: UserSettings\Layouts\default-2021.dwlt
+      originalPath: 
+      indexStatus: 0
+      workTreeStatus: 3
+    changedFilesText: 1 changed file
     lastCurrentBranchChangedEvent:
-      updatedTimeString: 2022-11-16T19:53:12.070-07:00
+      updatedTimeString: 2022-11-19T21:39:15.839-07:00
       cacheType: 1
     lastStatusEntriesChangedEvent:
-      updatedTimeString: 2022-11-16T19:53:05.433-07:00
+      updatedTimeString: 2022-11-18T12:31:04.171-07:00
       cacheType: 6
     lastLocksChangedEvent:
       updatedTimeString: 0001-01-01T00:00:00.000+00:00
@@ -5042,7 +5140,7 @@ MonoBehaviour:
   currentRemoteUrl: https://github.com/amscott0/GrapplingGame.git
   statusAhead: 0
   statusBehind: 0
-  hasItemsToCommit: 0
+  hasItemsToCommit: 1
   isTrackingRemoteBranch: 1
   currentBranchContent:
     m_Text: master
@@ -5053,13 +5151,13 @@ MonoBehaviour:
     m_Image: {fileID: 0}
     m_Tooltip: Url of the origin remote
   lastCurrentBranchAndRemoteChangedEvent:
-    updatedTimeString: 2022-11-16T19:53:12.070-07:00
+    updatedTimeString: 2022-11-19T21:39:15.839-07:00
     cacheType: 1
   lastTrackingStatusChangedEvent:
-    updatedTimeString: 2022-11-16T19:53:12.603-07:00
+    updatedTimeString: 2022-11-19T21:39:17.597-07:00
     cacheType: 5
   lastStatusEntriesChangedEvent:
-    updatedTimeString: 2022-11-16T19:53:05.433-07:00
+    updatedTimeString: 2022-11-18T12:31:04.171-07:00
     cacheType: 6
   pullButtonContent:
     m_Text: Pull
@@ -5077,7 +5175,7 @@ MonoBehaviour:
     m_Text: Fetch
     m_Image: {fileID: 0}
     m_Tooltip: 
-  repositoryProgressValue: 0
+  repositoryProgressValue: 0.9962756
   repositoryProgressMessage: 
   appManagerProgressValue: 1
   appManagerProgressMessage: 
@@ -5139,7 +5237,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: f0740000
     m_LastClickedID: 29936
-    m_ExpandedIDs: 000000000c750000
+    m_ExpandedIDs: 000000000e750000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -5167,7 +5265,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000000c750000
+    m_ExpandedIDs: 000000000e750000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -5549,9 +5647,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 17.520102, y: -95.32152, z: 206.22528}
+    m_Target: {x: 16.926888, y: -94.77173, z: 206.53046}
     speed: 2
-    m_Value: {x: 17.520102, y: -95.32152, z: 206.22528}
+    m_Value: {x: 16.926888, y: -94.77173, z: 206.53046}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
