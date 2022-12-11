@@ -124,7 +124,7 @@ namespace StarterAssets
 		private Vector3 _inputDirection;
 
 		private GrapplingBehavior _grappleType;
-		
+
 
 	
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
@@ -133,6 +133,8 @@ namespace StarterAssets
 		private CharacterController _controller;
 		private StarterAssetsInputs _input;
 		private GameObject _mainCamera;
+
+		[SerializeField] public GameObject _grapplingGun;
 
 		private const float _threshold = 0.01f;
 
@@ -163,12 +165,12 @@ namespace StarterAssets
 			_input = GetComponent<StarterAssetsInputs>();
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 			_playerInput = GetComponent<PlayerInput>();
-			_grappleType = new GrapplingBehavior(_input);
+			_grappleType = new GrapplingBehavior(_input, GetComponent<LineRenderer>(), _grapplingGun.GetComponentInChildren<Transform>(), CinemachineCameraTarget.transform);
+			
 			
 #else
 			Debug.LogError( "Starter Assets package is missing dependencies. Please use Tools/Starter Assets/Reinstall Dependencies to fix it");
 #endif
-
 			// reset our timeouts on start
 			_jumpTimeoutDelta = JumpTimeout;
 			_fallTimeoutDelta = FallTimeout;
@@ -180,8 +182,6 @@ namespace StarterAssets
 
 		private void Update()
 		{
-			_grappleType.grapple();
-			
 			WallRunAndSlide();
 			Jump();
 			GroundedCheck();
@@ -229,6 +229,9 @@ namespace StarterAssets
 
 				// rotate the player left and right
 				transform.Rotate(Vector3.up * _rotationVelocity);
+				// _grapplingGun.transform.Rotate(Vector3.up * _rotationVelocity);
+				_grapplingGun.transform.localRotation = Quaternion.Euler(_cinemachineTargetPitch, 0.0f, 0.0f);
+
 			}
 		}
 
@@ -538,7 +541,9 @@ namespace StarterAssets
 			// print("wallJumpDirection: " + _wallJumpDirection);
 			_controller.Move((new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime) +
 							(_horizontalDirection.normalized * (_horizontalSpeed * Time.deltaTime)) +
-							(_wallJumpDirection * (_wallJumpSpeed * Time.deltaTime)));
+							(_wallJumpDirection * (_wallJumpSpeed * Time.deltaTime)) +
+							_grappleType.grapple() * Time.deltaTime
+							);
 		}
 		private void WallRunAndSlide(){
 
