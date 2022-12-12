@@ -3,16 +3,17 @@ Grappling Game: Abraham Scott & Isaac Scott
 This project is a Grappling Game, which features fun movement and a grappling hook.
 
 Version info:
-    Unity 2021.3.12f1
-    .NET SDK 6.0.402
-    C# 10.0
+- Unity 2021.3.12f1
+- .NET SDK 6.0.402
+- C# 10.0
 
 If you want to look at the project by looking at the Unity Scene:
-    1. Download Unity Hub
-    2. Get version Unity 2021.3.12f1
-    3. Clone this repository into a folder and open it in Unity Hub.
+1. Download Unity Hub
+2. Get version Unity 2021.3.12f1
+3. Clone this repository into a folder and open it in Unity Hub.
 
 If you just want to run the game:
+
     Provided in the Github repo is an executable file that should run fine on Windows machines. It has not been tested on Mac or Linux.
 
 Game bindings and info:
