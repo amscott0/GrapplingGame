@@ -14,7 +14,7 @@ If you want to look at the project by looking at the Unity Scene:
 
 If you just want to run the game:
 
-    Provided in the Github repo is an executable file that should run fine on Windows machines. It has not been tested on Mac or Linux.
+- Provided in the Github repo in Build is an executable file (Grappling Game.exe) that should run fine on Windows machines. It has not been tested on Mac or Linux.
 
 Game bindings and info:
 - Basic movement: WASD keys controls movement, mouse movement controls camera, 
