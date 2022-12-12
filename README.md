@@ -7,6 +7,8 @@ Version info:
 - .NET SDK 6.0.402
 - C# 10.0
 
+Demo video: https://drive.google.com/file/d/1T-nXOov3DnZd8bj_uSalvPJViNSYeKtd/view?usp=sharing
+
 If you want to look at the project by looking at the Unity Scene:
 1. Download Unity Hub
 2. Get version Unity 2021.3.12f1
