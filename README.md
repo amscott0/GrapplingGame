@@ -15,7 +15,7 @@ If you want to look at the project by looking at the Unity Scene:
 If you just want to run the game:
 
 - Windows: In the Build folder, find the executable Grappling Game.exe.
-- macOS: In the Build.app folder, find the file Grappling Game.
+- macOS: In the Build.app/Contents/macOS folder, find the file Grappling Game.
 - Linux: In the Build_linux folder, find the file Grappling Game.
 
 Note: only the Windows version has been tested thoroughly, so the macOS and Linux versions may have some bugs.
