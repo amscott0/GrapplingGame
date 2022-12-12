@@ -24,6 +24,6 @@ Note: only the Windows version has been tested thoroughly, so the macOS and Linu
 
 Game bindings and info:
 - Basic movement: WASD keys controls movement, mouse movement controls camera, 
-- Advanced movement: CTRL is dodge, SPACE is jump (space again in air to double-jump), SHIFT toggles sprint (on by default), C key slides while sprinting
+- Advanced movement: CTRL is dodge, SPACE is jump (space again in air to double-jump), SHIFT toggles sprint, C key slides while sprinting
 - Grappling mechanics: Pressing left mouse button activates grapple (be sure to be looking at something), pressing the G key switches between grapple modes
 - Other: Quit the game by pressing the ESC key
