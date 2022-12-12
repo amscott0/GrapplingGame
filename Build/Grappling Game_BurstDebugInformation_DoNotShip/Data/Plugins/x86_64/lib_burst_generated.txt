@@ -106,11 +106,6 @@ Library: lib_burst_generated
 --compilation-defines=NET_STANDARD_2_1
 --compilation-defines=NETSTANDARD
 --compilation-defines=NETSTANDARD2_1
---compilation-defines=DEVELOPMENT_BUILD
---compilation-defines=ENABLE_PROFILER
---compilation-defines=DEBUG
---compilation-defines=TRACE
---compilation-defines=UNITY_ASSERTIONS
 --compilation-defines=UNITY_PRO_LICENSE
 --compilation-defines=ENABLE_CUSTOM_RENDER_TEXTURE
 --compilation-defines=ENABLE_DIRECTOR
@@ -157,7 +152,6 @@ Library: lib_burst_generated
 --compilation-defines=TIMELINE_FRAMEACCURATE
 --linker-options=PdbAltPath="Grappling Game_Data/Plugins/x86_64"
 --generate-link-xml=Temp\burst.link.xml
---debug=Full
 --output=O:\UnityHub\Grappling Game\Temp\StagingArea\Data\Plugins\x86_64\lib_burst_generated
 --root-assembly=O:\UnityHub\Grappling Game\Temp\StagingArea\Data\Managed\UnityEngine.UI.dll
 --root-assembly=O:\UnityHub\Grappling Game\Temp\StagingArea\Data\Managed\Unity.RenderPipelines.Core.Runtime.dll
@@ -310,11 +304,6 @@ Library: lib_burst_generated
 --compilation-defines=NET_STANDARD_2_1
 --compilation-defines=NETSTANDARD
 --compilation-defines=NETSTANDARD2_1
---compilation-defines=DEVELOPMENT_BUILD
---compilation-defines=ENABLE_PROFILER
---compilation-defines=DEBUG
---compilation-defines=TRACE
---compilation-defines=UNITY_ASSERTIONS
 --compilation-defines=UNITY_PRO_LICENSE
 --compilation-defines=ENABLE_CUSTOM_RENDER_TEXTURE
 --compilation-defines=ENABLE_DIRECTOR
@@ -361,7 +350,6 @@ Library: lib_burst_generated
 --compilation-defines=TIMELINE_FRAMEACCURATE
 --linker-options=PdbAltPath="Grappling Game_Data/Plugins/x86_64"
 --generate-link-xml=Temp\burst.link.xml
---debug=Full
 --output=O:\UnityHub\Grappling Game\Temp\StagingArea\Data\Plugins\x86_64\lib_burst_generated
 --root-assembly=O:\UnityHub\Grappling Game\Temp\StagingArea\Data\Managed\UnityEngine.UI.dll
 --root-assembly=O:\UnityHub\Grappling Game\Temp\StagingArea\Data\Managed\Unity.RenderPipelines.Core.Runtime.dll
