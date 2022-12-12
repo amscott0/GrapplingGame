@@ -5,13 +5,14 @@ using UnityEngine;
 using System;
 using TMPro;
 
+//This class implements the Observer pattern.
 public class UIDisplay : MonoBehaviour
 {
     Slider _dodgeSlider;
     [SerializeField] public TMP_Text _text;
 
     private int index = 0;
-    public static Func<int> observables;
+    public static Func<int> observables; //This variable is public and static, so any class anywhere can subscribe and send a message to the UI
 
     private void Start(){
         _dodgeSlider = GetComponent<Slider>();

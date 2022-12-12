@@ -6,7 +6,7 @@ using System;
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
     using UnityEngine.InputSystem;
 #endif
-
+//This class and its subclasses implement the Command pattern.
 public abstract class GrapplingBehavior
 {
     public bool prevClicked = false;

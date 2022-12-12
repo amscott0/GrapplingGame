@@ -1,7 +1,7 @@
 using UnityEngine;
 using System;
 using UnityEngine.InputSystem;
-
+//This class and its subclasses are part of the Command pattern, these classes are the commands that can be created
 public abstract class Command
 {
     public void Execute(){

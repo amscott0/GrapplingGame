@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 namespace StarterAssets
 {
+	//This class is the client of the Command pattern.
 	public class StarterAssetsInputs : MonoBehaviour
 	{
 		[Header("Character Input Values")]

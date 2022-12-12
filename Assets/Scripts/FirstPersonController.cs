@@ -10,6 +10,7 @@ namespace StarterAssets
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 	[RequireComponent(typeof(PlayerInput))]
 #endif
+	//This class controls everything related to the player
 	public class FirstPersonController : MonoBehaviour
 	{
 		[Header("Player")]
