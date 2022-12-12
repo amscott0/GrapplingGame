@@ -168,7 +168,7 @@ namespace StarterAssets
 			_input = GetComponent<StarterAssetsInputs>();
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 			_playerInput = GetComponent<PlayerInput>();
-			_grappleType = new AntiGrav(_input, GetComponent<LineRenderer>(), _grapplingGun.GetComponentInChildren<Transform>(), CinemachineCameraTarget.transform);
+			
 			
 			
 #else
@@ -180,7 +180,7 @@ namespace StarterAssets
 			_wallJumpTimeoutDelta = WallJumpTimeout;
 			_jumpsLeft = Jumps;
 			_cameraPosition = CinemachineCameraTarget.transform.position;
-			print(_cameraPosition);
+			_grappleType = new AntiGrav(_input, GetComponent<LineRenderer>(), _grapplingGun.GetComponentInChildren<Transform>(), CinemachineCameraTarget.transform);
 		}
 
 		private void Update()
