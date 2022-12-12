@@ -12,7 +12,7 @@ If you want to look at the project by looking at the Unity Scene:
 2. Get version Unity 2021.3.12f1
 3. Clone this repository into a folder and open it in Unity Hub.
 
-If you just want to run the game:
+If you just want to run the game, first clone the repo in a folder, then:
 
 - Windows: In the Build folder, find the executable Grappling Game.exe.
 - macOS: In the Build.app/Contents/macOS folder, find the file Grappling Game.
