@@ -17,5 +17,6 @@ If you just want to run the game:
 
 Game bindings and info:
 	Basic movement: WASD keys controls movement, mouse movement controls camera, 
-    Advanced movement: CTRL is dodge, space is jump (space again in air to double-jump), shift toggles sprint (on by default)
+    Advanced movement: CTRL is dodge, SPACE is jump (space again in air to double-jump), SHIFT toggles sprint (on by default)
     Grappling mechanics: Pressing left mouse button activates grapple (be sure to be looking at something), pressing the G key switches between grapple modes
+    Other: Quit the game by pressing the ESC key

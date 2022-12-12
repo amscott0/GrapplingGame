@@ -309,7 +309,10 @@ namespace StarterAssets
 			
 			_grappleDirection += grappleGravity;
 
+			if(_grappleDirection.magnitude < 1.0f)
+				_grappleDirection = Vector3.zero;
 			_grappleDirection = _grappleDirection.normalized * (_grappleDirection.magnitude - (100.0f * Time.deltaTime));
+
 			
 			if((_horizontalSpeed <= SprintSpeed) && targetSpeed == 0.0f){ // if _horizontalSpeed speed is sufficiently small, decelerate faster
 				_horizontalSpeed -= (10.0f) * Time.deltaTime;
@@ -358,6 +361,7 @@ namespace StarterAssets
 			// print("_horizontalSpeed: " + _horizontalSpeed + " _horizontalDirection: " + _horizontalDirection + " targetSpeed: " + targetSpeed);
 			// print("_verticalVelocity: " + _verticalVelocity);
 			// print("wallJumpDirection: " + _wallJumpDirection);
+			Debug.Log("Direction: " + _grappleDirection + " Gravity: "  +grappleGravity  +  " Magnitude: " + _grappleDirection.magnitude);
 			_controller.Move((new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime) +
 							(_horizontalDirection.normalized * (_horizontalSpeed * Time.deltaTime)) +
 							(_wallJumpDirection * (_wallJumpSpeed * Time.deltaTime)) +

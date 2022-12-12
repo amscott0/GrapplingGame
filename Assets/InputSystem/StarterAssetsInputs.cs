@@ -71,6 +71,9 @@ namespace StarterAssets
 
 			SwitchGrappleInput(new SwitchGrapple(value).Execute());
 		}
+		public void OnExit(InputValue value){
+			Application.Quit();
+		}
 #endif
 
 
